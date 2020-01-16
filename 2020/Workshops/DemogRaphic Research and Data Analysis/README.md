@@ -15,23 +15,20 @@ R is a powerful, cross-platform, open-source, and **free** software that has bee
 For the session, you will be required to have R and Rstudio installed on your computer. If you are still to download/install R [[click here](https://cloud.r-project.org/)] or [[here](https://rstudio.com/products/rstudio/download/)] to download RStudio
 
 
-## Outline of Workshop
+# Outline of Workshop
 
-# Day 1: Introduction
+## Day 1: Introduction to Demographic Data Analysis
 
 - Introduction to R (syntax, packages {tidyverse}) and RStudio - editor
 - Data handling: import/export data to/from R
 - Basic operations: assigning
 - Basic demographic measures: Rates (Fertility rates), probabilities and proportions 
-
-# Day 2: Demographic Data Analysis
-
 - Life expectancy
 - Migration Expectancy
 - Standardization of demographic measure
 - Daily Review
 
-# Day 3: Data Visualization
+## Day 2: Data Visualization
 
 - Recap
 - Introduction to Data visualization in R
@@ -44,7 +41,7 @@ For the session, you will be required to have R and Rstudio installed on your co
 - Save/Export plots
 - Daily Review
 
-# Day 4: Demographic Research
+## Day 3: Demographic Research
 
 - Recap
 - {survey)} basics in R
@@ -54,16 +51,16 @@ For the session, you will be required to have R and Rstudio installed on your co
 - Publication ready tables with {stargazar} {kableExtra}
 - Session Review
 
+# Acknowledgement
+
+Some of the materials used in this workshop are adapted from the Barcelona Summer School of Demography. The [BSSD](https://ced.uab.cat/en/courses/barcelona-summer-school-of-demography/) offers some excellent training in demographic data analysis and visualization. The summer school is currently accepting applications and details of the school as well as the module can be found [[here](https://ced.uab.cat/en/courses/barcelona-summer-school-of-demography/)]
+
+
 
 # Contact
 
 Twitter: [[@eOlamijuwon](https://twitter.com/eolamijuwon/)]
 
-Twitter: [[@EswatiniUseR](https://twitter.com/EswatiniUseR/)]
-
-Website: [[e.Olamijuwon.com](https://e.olamijuwon.com/)]
-
-Website: [[Eswatini UseR](https://www.meetup.com/EswatiniUseR/)]
-
 Email: [emmanuel[at]olamijuwon[dot]com
 
+Website: [[e.Olamijuwon.com](https://e.olamijuwon.com/)]
