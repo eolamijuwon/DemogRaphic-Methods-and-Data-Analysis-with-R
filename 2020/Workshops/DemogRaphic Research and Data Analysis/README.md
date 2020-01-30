@@ -60,7 +60,7 @@ For the session, you will be required to have R and Rstudio installed on your co
 -  Introduction to Data visualization in R
 
 -  Basic data visualization principles
--  Impressive data visualization showcases [{tidytuesday}](https://nsgrantham.shinyapps.io/tidytuesdayrocks/), [R R-Graph Gallery](https://www.r-graph-gallery.com/index.html)
+-  Impressive data visualization showcases [{tidytuesday}](https://nsgrantham.shinyapps.io/tidytuesdayrocks/), [R-Graph Gallery](https://www.r-graph-gallery.com/index.html)
 
 -  {ggplot2} basics
 
