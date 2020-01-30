@@ -17,9 +17,11 @@ For the session, you will be required to have R and Rstudio installed on your co
 
 ### Day 1: Introduction to Data Analysis
 
--  Introduction to R (syntax, packages {tidyverse}) and RStudio – editor
+-  Introduction to R and RStudio – editor
 
--  Basic operations: assigning
++  R syntax and Basic operations: assigning
+
++  R packages [{tidyverse}](https://www.tidyverse.org/learn/) 
     
 -  Data handling: import/export data to/from R
 		
@@ -29,7 +31,7 @@ For the session, you will be required to have R and Rstudio installed on your co
 
 -  Contingency tables (cross-tabulations)
 
--  {survey)} basics in R
+-  Analysis of Complex surveys with [{survey}](http://asdfree.com/demographic-and-health-surveys-dhs.html)
 
 -  Practical session
 
@@ -44,7 +46,7 @@ For the session, you will be required to have R and Rstudio installed on your co
 
 -  Lab Exercises
 
--  Publication ready tables with {stargazar} {kableExtra}
+-  Publication ready tables with [{stargazar}](https://www.jakeruss.com/cheatsheets/stargazer/) [{kableExtra}](http://haozhu233.github.io/kableExtra/awesome_table_in_html.html)
 
 -- Practical Session
 
@@ -56,21 +58,19 @@ For the session, you will be required to have R and Rstudio installed on your co
 -  Introduction to Data visualization in R
 
 -  Basic data visualization principles
--  Impressive data visualization showcases [{tidytuesday}](https://nsgrantham.shinyapps.io/tidytuesdayrocks/)
+-  Impressive data visualization showcases [{tidytuesday}](https://nsgrantham.shinyapps.io/tidytuesdayrocks/), [R R-Graph Gallery](https://www.r-graph-gallery.com/index.html)
 
 -  {ggplot2} basics
 
--  More {ggplot2} geoms {wafflechart}
+-  More {ggplot2} geoms [{wafflechart}](https://github.com/hrbrmstr/waffle)
 
--  {ggplot} extras
+- `{ggplot}` Extras
 -  {ggthemes}
 -  {gganimate}
 
 -  Practical session
 
--  Q & A
-
-- Save/Export plots
+-  Save/Export plots
 
 -  Closing
 
@@ -92,6 +92,8 @@ For the session, you will be required to have R and Rstudio installed on your co
 
 -  Session Review
 
+-  Q & A
+
 -  Closing 
 
 
@@ -106,6 +108,10 @@ You can also get help with a specific function by using the *?* function
 ```{r}
 ?mutate
 ```
+
+Efficient R programming [Online Copy](https://csgillespie.github.io/efficientR/)
+
+R for Data Science [Online Copy](https://r4ds.had.co.nz/)
 
 
 # Acknowledgement
