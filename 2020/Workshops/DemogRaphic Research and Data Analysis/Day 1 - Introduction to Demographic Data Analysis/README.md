@@ -5,11 +5,12 @@ Date: "10 February 2020"
 ---
 
 
+#
 
-## Introduction to R and RStudio
+# Introduction to R and RStudio
 
 
-### R syntax and Basic operations: assigning
+## R syntax and Basic operations: assigning
 
 The R synthax would usually comprise of:
 
@@ -58,7 +59,7 @@ print (age)
 
 Note that we used a function *`print`* in the above examples. Functions are built in capabilities of R (base R) or could be gotten from libraries (see ##packages) or you could write one. Executing a function is reffered to as *calling* the function. Most functions can take several arguments (details can be found on the package website).
 
-### R Functions
+## R Functions
 
 
 #### Exercise 1A.1
@@ -70,7 +71,7 @@ Write a function to:
   - Find a number which is greater than 17 as much as it is less than 31. Using the same function, find the number which is greater than 16 as much as it is less than 50.
 
 
-### R packages
+## R packages
 
 R packages are a collection of R *functions*, *complied code* and *sample data*. They are stored under a directory called "library" in the R environment. By default, R installs a set of packages during installation. You can view already installed packages using the `installed.packages()` function. More packages can be installed/added after using `install.packages("package.name")` or `devtools::install_github("repository/package.name")`. 
 
@@ -98,7 +99,7 @@ These packages are also embedded in the Tidyverse package and a detailed descrip
 
 
 
-##  Data handling: import/export data to/from R
+#  Data handling: import/export data to/from R
 
 You can load/export data into R from various data format including ".csv", ".txt", ".dta", ".sav", ".rjson" among others.
 
@@ -118,42 +119,36 @@ library(readstata13)
 
 #### Exercise 1A.3
 
-Using your background knowledge of how functions work, use the `read.dta13()` function from `readstata13` package to load the AGYW dataset (downloaded on your computer) and assign it to *agyw.dataset*
+- Using your background knowledge of how functions work, use the `read.dta13()` function from `readstata13` package to load the AGYW dataset (downloaded on your computer) and assign it to *agyw.dataset*
 
-*Example:* agmy.data <- `"C:/Users/Nigeria/Ekiti State/Federal University Oye/Demo-SocStat/Nigeria [DHS].dta"`
+- *Example:* agmy.data <- `"C:/Users/Nigeria/Ekiti State/Federal University Oye/Demo-SocStat/Nigeria [DHS].dta"`
 
 
 You can browse the dataset with "View"
-
 `View(agyw.dataset)`
   
 You can check the structure of your dataset
-
 `str(agyw.dataset)`
   
 
 Alternatively you can use the "glimpse" function from the dplyr package to view the data structure
-
 `glimpse(agyw.dataset)`
   
 
 You can examine the first few observations in the dataset (could be 5/10/more) using the `head` function
-
 `head(agyw.dataset, n=30)`
   
   
 You can check how many rows(number of observations) are in your dataset using the `nrow` function 
-  
 `nrow(agyw.dataset)`
   
 You can check how many rows(number of variables) are in your dataset using the `ncol` function 
-
 `ncol(agyw.dataset)`
 
 
 
-
-##  Data Wrangling/Management
+#
+#  Data Wrangling/Management
 
 Data wrangling refers to the process of cleaning, restructuring and enriching the raw data available into a more usable format. This could include, creating new information from raw data, dropping values or organizing data.
 
