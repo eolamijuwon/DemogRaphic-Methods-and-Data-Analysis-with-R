@@ -7,7 +7,7 @@ Title: DemogRaphic Research and Data Analysis
 
 # Introduction
 
-The purpose of this workshop is to introduce participants to demographic research and data analysis using R. As you may have already known, R is a powerful, cross-platform, open-source, and **free** software that has been widely adopted across a number of [social]science fields. We will attempt to cover the basics of demographic methods and data analysis in R. The session will focus on laying a groundwork to enable future self-teaching of specific use cases *[models, packages, analysis]*. A number of platforms provide *free* training resources for learning R online. This includes but not limited to *[DataCamp](https://www.datacamp.com/)*, *[edX](https://www.edx.org/)*, *[Cousera](https://www.coursera.org/)*, *[Udacity](https://www.udacity.com/)*, and of course *[YouTube](https://www.youtube.com/)*, 
+The purpose of this workshop is to introduce participants to demographic research and data analysis using R. As you may have already known, R is a powerful, cross-platform, open-source, and **free** software that has been widely adopted across a number of [social]science fields. We will attempt to cover the basics of demographic methods and data analysis in R. The session will focus on laying a groundwork to enable future self-teaching of specific use cases *[models, packages, analysis]*. A number of platforms provide *free* training resources for learning R online. This includes but not limited to *[edX](https://www.edx.org/)*, *[Cousera](https://www.coursera.org/)*, *[Udacity](https://www.udacity.com/)*, and of course *[YouTube](https://www.youtube.com/)*, 
 
 
 For the session, you will be required to have R and Rstudio installed on your computer. If you are still to download/install R [[click here](https://cloud.r-project.org/)] or [[here](https://rstudio.com/products/rstudio/download/)] to download RStudio
@@ -21,7 +21,7 @@ For the session, you will be required to have R and Rstudio installed on your co
 
     -  R syntax and Basic operations: assigning
 
-    -  R packages [`tidyverse`](https://www.tidyverse.org/learn/) 
+    -  R packages -e.g. [`tidyverse`](https://www.tidyverse.org/learn/) 
     
 -  Data handling: import/export data to/from R
 		
@@ -29,14 +29,14 @@ For the session, you will be required to have R and Rstudio installed on your co
 
 -  Contingency tables (cross-tabulations)
 
--  Analysis of Complex surveys with [`survey`](http://asdfree.com/demographic-and-health-surveys-dhs.html)
+-  Analysis of Complex Surveys with [`survey`](http://asdfree.com/demographic-and-health-surveys-dhs.html)
 
 -  Lab Exercises
 
                 
 ### Day 2: Data Visualization
 
--  Recap of Day I Sessions
+-  Recap
 
 -  Regression models in R
 
@@ -115,11 +115,21 @@ You can also get help with a specific function by using the *?* function
 ?mutate
 ```
 
-Cheat Sheets
+-   Cheat Sheets
 
-Efficient R programming [Online Copy](https://csgillespie.github.io/efficientR/)
+-   Local UseR Groups
 
-R for Data Science [Online Copy](https://r4ds.had.co.nz/)
+    - [Abuja R Users Group](https://twitter.com/AbujaRUG)
+    
+    - [R User Group Lagos](https://twitter.com/LagosRUsers)
+
+    - [Ibadan R User Group](https://twitter.com/IbadanRusers)
+    
+
+-   Efficient R programming [Online Copy](https://csgillespie.github.io/efficientR/)
+
+-   R for Data Science [Online Copy](https://r4ds.had.co.nz/)
+
 
 
 # Acknowledgement
