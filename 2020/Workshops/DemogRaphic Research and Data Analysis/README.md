@@ -18,7 +18,13 @@ For the session, you will be required to have R and Rstudio installed on your co
 ## Day 1: Introduction to Data Analysis
 
 
+<<<<<<< HEAD
 
+=======
+		Basic operations: assigning
+    
+		Data handling: import/export data to/from R
+>>>>>>> e0b67b193fb7c647a3313ae22fa5a94005ba5e42
 
 ## Day 1: Introduction to Data Analysis
 
