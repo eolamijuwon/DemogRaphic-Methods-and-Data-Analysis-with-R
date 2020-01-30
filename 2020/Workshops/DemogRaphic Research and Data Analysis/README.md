@@ -19,9 +19,11 @@ For the session, you will be required to have R and Rstudio installed on your co
 
 10-15 – 11.30: 	Introduction to R (syntax, packages {tidyverse}) and RStudio – editor
 
-> Basic operations: assigning
+\leftskip30pt\parindent0em
+
+Basic operations: assigning
     
-> Data handling: import/export data to/from R
+Data handling: import/export data to/from R
 
 
 11-30 – 12.30: 	Lab Exercise
