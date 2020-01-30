@@ -15,7 +15,7 @@ For the session, you will be required to have R and Rstudio installed on your co
 
 # Outline of Workshop
 
-### Day 1: Introduction to Data Analysis
+### Day 1: Introduction to Data Analysis with R
 
 -   Introduction to R and RStudio – editor
 

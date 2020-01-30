@@ -1,122 +1,104 @@
 ---
-Title: "DemogRaphic Research and Data Analysis"
+Title: "Introduction to Data Analysis with R"
 
-Author: "Emmanuel Olamijuwon"
-
-Host Institution: "Federal University, Oye Ekiti, Ekiti State, Nigeria"
-
-Date: "10-14 February 2020"
+Date: "10 February 2020"
 ---
 
 
-# Introduction
+
+## Introduction to R and RStudio
 
 
-
-For the session, you will be required to have R and Rstudio installed on your computer. If you are still to download/install R [[click here](https://cloud.r-project.org/)] or [[here](https://rstudio.com/products/rstudio/download/)] to download RStudio
-
-
-## The R syntax
+### R syntax and Basic operations: assigning
 
 The R synthax would usually comprise of:
+
   - a function
+  
   - '<-' the assignment operator
+  
   - = for arguments
-  - '# for comments # and how they are used to document function and its content
+  
+  - '# for comments/description/documentation
+  
   - $ the operator
 
 You can get an output from R simply by typing in math in the console.
 
 ```{r}
 
-## How far are we from vision 2022 (in years)
+## How old are you (in years)
 
-2022 - 2019
+YoB <- 1960
 
-3 + 5
+present_year <- 2020
 
-## Quiz - 
- 
-# Pick a number
+age <- present_year - YoB
+
+print (age)
 
 ```
 
 
-## Creating Objects & Function
-
-Instead of just typing, we could assign the value[answer] to an *object/variable*
-
-### Practice Exercise I
+Alternatively,
 
 ```{r}
 
-##  Add 3 and 5. Assign the value to a
+## How old are you (in years)
 
+age <- 2020 - 1960
 
-##  Subtract 2019 from 2022. Assign the value to b
+print (age)
 
+## OR
 
-##  Find the square root of 49. Assign the value to c
-##  Note:: The R function to find square root is `sqrt`
-
-
-##  Find the value of (a+c)/b. Assign the value to d
-
-
-##  print the value of d
-
-print(d)
-
-##  or
-
-d
-
+2020 - 1960
 
 ```
 
-Note that we used a function *`sqrt`* to find the square root of 49 in the practice exercise. Functions are built in capabilities of R (base R) or could be gotten from libraries (see ##packages) or you could write yours. Exectuting a function is reffered to as *calling* the function. Most functions can take several arguments (details can be found on the package website).
+Note that we used a function *`print`* in the above examples. Functions are built in capabilities of R (base R) or could be gotten from libraries (see ##packages) or you could write one. Executing a function is reffered to as *calling* the function. Most functions can take several arguments (details can be found on the package website).
+
+### R Functions
 
 
-## Packages
+#### Exercise 1A.1
 
-A package is a collection of R functions, complied code and sample data. Examples of R packages can be found on the RStudio [[website](https://rstudio.com/products/rpackages/)].
+- Write a function to:
+
+  - Find the difference between 125 and its 3/5. Using the same function, find the difference between 50 and it's 1/5.
+  
+  - Find a number which is greater than 17 as much as it is less than 31. Using the same function, find the number which is greater than 16 as much as it is less than 50.
+
+
+### R packages
+
+R packages are a collection of R *functions*, *complied code* and *sample data*. They are stored under a directory called "library" in the R environment. By default, R installs a set of packages during installation. You can view already installed packages using the `installed.packages()` function. More packages can be installed/added after using `install.packages("package.name")` or `devtools::install_github("repository/package.name")`. 
+
+
+Some very useful R packages in applied demography includes [`DemoDecomp`](https://github.com/timriffe/DemoDecomp/), [`demography`](https://github.com/robjhyndman/demography), [`demogR`](https://www.jstatsoft.org/article/view/v022i10), among many others. Examples of R packages can be found on the RStudio [[website](https://rstudio.com/products/rpackages/)].
+
+
+At every start of the R studio, only the default packages will be loaded by default. Other packages which are already installed have to be loaded explicitly using the `library(package.name)` function. *Think about digging a well. You only have to dig once `installed.packages()` and fetch water everytime you need one `library(package.name)`*
+
 
 Some common R packages are
-  
   -  *ggplot2*
   -  *dplyr*
   -  *tidyr*
   -  *readr*
   
-  These packages are also embedded in the Tidyverse package and a detailed description of can be found on the package  [[website](https://www.tidyverse.org/packages/)].
-
-  
-To install/use a package
-
-  - Step 1: Install the package install.packages(`package.name`)
-  
-      > or devtools::install_github("repository/package.name")
-  
-  -  Step 2: Load the package    library(`package.name`)
-  
-  Note, that we are calling two functions above *install.packages* and *library*
-  
-```{r}
-
-  install.packages("dplyr")
-
-  install.packages("readr")
-  
-  ##  or install.packages("readr", "dplyr")
-  
-  library(dplyr)
-  
-  library(readr)
-
-```
+These packages are also embedded in the Tidyverse package and a detailed description of can be found on the package  [[website](https://www.tidyverse.org/packages/)].
 
 
-#  Load Data
+#### Exercise 1A.2
+  
+- Install the `tidyverse` package
+
+- Load the `tidyverse` package
+
+
+
+##  Data handling: import/export data to/from R
 
 We can load data into R from various data format including ".csv", ".txt", ".dta", ".sav", ".rjson" among others.
 
@@ -142,11 +124,6 @@ TeenDatR <- read_csv ("C:\\Users\\eOlamijuwon\\OneDrive\\Research\\Computational
 
 ```
 
-
-# Data Exploration
-
-```{r}
-
   # You can browse the dataset with "View"
   View(TeenData)
   
@@ -168,7 +145,18 @@ TeenDatR <- read_csv ("C:\\Users\\eOlamijuwon\\OneDrive\\Research\\Computational
   # You can check how many rows(number of variables) are in your dataset using the `nrow` function 
   ncol(TeenData)
 
-```
+##  Data Wrangling/Management
+
+
+## Descriptive statistics in R
+
+## Contingency tables (cross-tabulations)
+
+## Analysis of Complex Surveys with [`survey`](http://asdfree.com/demographic-and-health-surveys-dhs.html)
+
+
+
+
 
 
 # Activity 1
@@ -192,75 +180,6 @@ From the old `TeenData` data, create a new dataset ::TeenPreg:: focusing on:
   We will use the dplyr package [filter, select, mutate]
 
 
-## Solution 1
-
-```{r}
-
-  #     - Clean Data - We want study teenage pregnancy in Eswatini
-  #       That is, our sample should be teenagers
-  #       From the old `TeenData` data, create a new dataset ::TeenPreg:: focusing on:
-                TeenPreg <- TeenData %>% 
-  
-  #       - Teenagers that have never given birth (CM1)
-                      filter(CM1 == "No") %>% 
-  
-  #       - Create a var `ever_had_sex` from -Age at first sex (SB1)
-                      mutate(ever_had_sex = as.numeric(SB1),
-                             ever_had_sex = ifelse((ever_had_sex < 11), 
-                                                   "Had Sex", "Never Had Sex")) %>% 
-  #         Note: Variable names cannot have spaces
-  
-  #       - Create a var `education` [<Sec/Sec+] from Highest educational attain (welevel).
-                      mutate(education = ifelse((welevel == "None" | welevel == "Primary"),
-                                                "< Secondary", "Secondary+")) %>% 
-  
-  #       - Create a var `violence_atti [No support/Support Violence]` from DV1A-DV1I
-    
-                      mutate(violence_atti = ifelse((DV1A =="Yes" |
-                                                      DV1B =="Yes" | DV1C =="Yes" | 
-                                                      DV1D =="Yes" | DV1E =="Yes" | 
-                                                      DV1F =="Yes" | DV1G =="Yes" |
-                                                      DV1H =="Yes" | DV1I =="Yes"),
-                                                    "No support", "Support Violence")) %>% 
-                      
-  #       - Drop all other variables and keep [ever_had_sex, education, violence_atti]
-                      select("ever_had_sex", "education", "violence_atti")
-
-```
-
-Note that in the above example we used the `filter`, `mutate`, and `select` functions from the `dplyr` package.
-
-
-You could also take the analysis further by presenting the descriptive statistics for all elements in the data using the `summaryTools` package
-
-```{r echo=TRUE}
-install.packages("compareGroups")
-library(compareGroups)
-descrTable(TeenPreg)
-```
-
-
-## Practice Exercise II
-  
-      - How many teenagers are in the `TeenPreg` dataset
-      
-      - How many teenagers in the `TeenPreg` dataset have had sex and support IPV
-      
-      - How many teenagers in the `TeenPreg` dataset support IPV and have Sec+ education
-      
-        NOTE: You can use the `table` function to tabulate
-  
-  
-# Class Activity
-
-  Using the TeenData, find:
-  
-      - The number of teenagers who have a comprehensive knowledge of HIV
-      
-      - The number of teenagers who have a positive attitude to the PLHIH
-      
-      - Among those who have had sex, what is the mean years since last sex (Age - Age1sex).
-  
   
   
 NOTE:: Solutions to Practice exercise:
@@ -272,4 +191,8 @@ NOTE:: Solutions to Practice exercise:
   - [[Class Activity](https://github.com/eolamijuwon/EswatiniUser/blob/master/Intro%20to%20R/Solutions/Practice%20Exercise%20II.R)]
   
 
+# Acknowledgements
 
+Some of the materials used in this session were adapted from:
+
+- https://www.tutorialspoint.com/r/r_packages.htm
