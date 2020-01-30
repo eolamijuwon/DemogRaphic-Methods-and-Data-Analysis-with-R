@@ -17,26 +17,21 @@ For the session, you will be required to have R and Rstudio installed on your co
 
 ### Day 1: Introduction to Data Analysis
 
-```
-10-15 – 11.30: 	Introduction to R (syntax, packages {tidyverse}) and RStudio – editor
+- Introduction to R (syntax, packages {tidyverse}) and RStudio – editor
 
-		Basic operations: assigning
+- Basic operations: assigning
     
-		Data handling: import/export data to/from R
+- Data handling: import/export data to/from R
 		
-		
-11.30 – 12.30 	Practical session
+- Lab Exercises
 
+- Descriptive statistics in R
 
-13.15 – 14.30:    Descriptive statistics in R
+- Contingency tables (cross-tabulations)
 
-		Contingency tables (cross-tabulations)
-    
-		{survey)} basics in R
-    
-    
-14.30 – 16.30   Practical session
-```
+- {survey)} basics in R
+
+- Practical session
 
 
 
@@ -44,15 +39,44 @@ For the session, you will be required to have R and Rstudio installed on your co
 ### Day 2: Data Visualization
 
 ```
-9.00 – 9.45		  Recap of Day I Sessions
+09.00 – 09.45 	Recap of Day I Sessions
 
-9.45 – 11.00	  Regression models in R
+09.45 – 11.00 	Regression models in R
 
-11.00 – 12.30	  Practical Session
+11.00 – 12.30 	Practical Session
 
-13.15 – 14.30	  Publication ready tables with {stargazar} {kableExtra}
+13.15 – 14.30 	Publication ready tables with {stargazar} {kableExtra}
 
-14.30-16.30		  Practical Session
+14.30 - 16.30 	Practical Session
+```
+
+### Day 2: Data Visualization
+
+```
+09.00 – 09.45 	Recap of Day I Sessions
+
+09.00 - 09.45		Recap
+09.45 – 11.00		Introduction to Data visualization in R
+Basic data visualization principles
+Impressive data visualization showcases {tidytuesday} - https://nsgrantham.shinyapps.io/tidytuesdayrocks/
+11.00 – 12.30	{ggplot2} basics
+More {ggplot2} geoms {wafflechart}
+
+13.15 – 14.30	{ggplot} extras
+{ggthemes}
+{gganimate}
+14.30 – 15.30	Practical session
+15.30 – 17.00	Q & A, Closing
+
+
+
+09.45 – 11.00 	Regression models in R
+
+11.00 – 12.30 	Practical Session
+
+13.15 – 14.30 	Publication ready tables with {stargazar} {kableExtra}
+
+14.30 - 16.30 	Practical Session
 ```
 
 
