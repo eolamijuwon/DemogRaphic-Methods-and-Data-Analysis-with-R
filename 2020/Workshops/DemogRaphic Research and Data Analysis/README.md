@@ -17,39 +17,49 @@ For the session, you will be required to have R and Rstudio installed on your co
 
 ## Day 1: Introduction to Data Analysis
 
+
+
+
+## Day 1: Introduction to Data Analysis
+
+```
 10-15 – 11.30: 	Introduction to R (syntax, packages {tidyverse}) and RStudio – editor
 
-\leftskip30pt\parindent0em
-
-Basic operations: assigning
+		Basic operations: assigning
     
-Data handling: import/export data to/from R
+		Data handling: import/export data to/from R
+		
+		
+11.30 – 12.30	  Practical session
 
 
-11-30 – 12.30: 	Lab Exercise
-
-13-15 – 14.30: 	Descriptive statistics in R
+13.15 – 14.30:	Descriptive statistics in R
 
     Contingency tables (cross-tabulations)
     
-    {survey} basics in R
+    {survey)} basics in R
+    
+    
+14.30 – 16.30	  Practical session
+```
 
-| 14:30 – 16.30: 	Lab Exercise
 
 
                 
-10-15 – 11.30: 	Introduction to R (syntax, packages {tidyverse}) and RStudio – editor
-
-- Introduction to R (syntax, packages {tidyverse}) and RStudio - editor
-- Data handling: import/export data to/from R
-- Basic operations: assigning
-- Basic demographic measures: Rates (Fertility rates), probabilities and proportions 
-- Life expectancy
-- Migration Expectancy
-- Standardization of demographic measure
-- Daily Review
-
 ## Day 2: Data Visualization
+
+```
+9.00 – 9.45		  Recap of Day I Sessions
+
+9.45 – 11.00	  Regression models in R
+
+11.00 – 12.30	  Practical Session
+
+13.15 – 14.30	  Publication ready tables with {stargazar} {kableExtra}
+
+14.30-16.30		  Practical Session
+```
+
 
 - Recap
 - Introduction to Data visualization in R
