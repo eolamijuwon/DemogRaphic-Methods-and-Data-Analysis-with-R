@@ -15,7 +15,7 @@ For the session, you will be required to have R and Rstudio installed on your co
 
 # Outline of Workshop
 
-## Day 1: Introduction to Data Analysis
+### Day 1: Introduction to Data Analysis
 
 ```
 10-15 – 11.30: 	Introduction to R (syntax, packages {tidyverse}) and RStudio – editor
@@ -25,14 +25,14 @@ For the session, you will be required to have R and Rstudio installed on your co
 		Data handling: import/export data to/from R
 		
 		
-11.30 – 12.30   Practical session
+11.30 – 12.30 	Practical session
 
 
 13.15 – 14.30:    Descriptive statistics in R
 
-    Contingency tables (cross-tabulations)
+		Contingency tables (cross-tabulations)
     
-    {survey)} basics in R
+		{survey)} basics in R
     
     
 14.30 – 16.30   Practical session
@@ -41,7 +41,7 @@ For the session, you will be required to have R and Rstudio installed on your co
 
 
                 
-## Day 2: Data Visualization
+### Day 2: Data Visualization
 
 ```
 9.00 – 9.45		  Recap of Day I Sessions
