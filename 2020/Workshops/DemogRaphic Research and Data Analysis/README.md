@@ -17,11 +17,11 @@ For the session, you will be required to have R and Rstudio installed on your co
 
 ### Day 1: Introduction to Data Analysis
 
--  Introduction to R and RStudio – editor
+-   Introduction to R and RStudio – editor
 
-  +  R syntax and Basic operations: assigning
+    -  R syntax and Basic operations: assigning
 
-  +  R packages [{tidyverse}](https://www.tidyverse.org/learn/) 
+    -  R packages [`tidyverse`](https://www.tidyverse.org/learn/) 
     
 -  Data handling: import/export data to/from R
 		
@@ -31,11 +31,11 @@ For the session, you will be required to have R and Rstudio installed on your co
 
 -  Contingency tables (cross-tabulations)
 
--  Analysis of Complex surveys with [{survey}](http://asdfree.com/demographic-and-health-surveys-dhs.html)
+-  Analysis of Complex surveys with [`survey`](http://asdfree.com/demographic-and-health-surveys-dhs.html)
 
 -  Practical session
 
-- [`tidyverse`](https://www.tidyverse.org/learn/)
+- 
 
 -  `[tidyverse](https://www.tidyverse.org/learn/)`
 
@@ -48,7 +48,7 @@ For the session, you will be required to have R and Rstudio installed on your co
 
 -  Lab Exercises
 
--  Publication ready tables with [{stargazar}](https://www.jakeruss.com/cheatsheets/stargazer/) [{kableExtra}](http://haozhu233.github.io/kableExtra/awesome_table_in_html.html)
+-  Publication ready tables with [`stargazar`](https://www.jakeruss.com/cheatsheets/stargazer/) [`kableExtra`](http://haozhu233.github.io/kableExtra/awesome_table_in_html.html)
 
 -  Practical Session
 
@@ -61,11 +61,11 @@ For the session, you will be required to have R and Rstudio installed on your co
 
 -  Basic data visualization principles
 
--  Impressive data visualization showcases [{tidytuesday}](https://nsgrantham.shinyapps.io/tidytuesdayrocks/), [R-Graph Gallery](https://www.r-graph-gallery.com/index.html)
+-  Impressive data visualization showcases [{tidytuesday}](https://nsgrantham.shinyapps.io/tidytuesdayrocks/), [{R-Graph Gallery}](https://www.r-graph-gallery.com/index.html)
 
 -  {ggplot2} basics
 
--  More {ggplot2} geoms [{wafflechart}](https://github.com/hrbrmstr/waffle)
+-  More {ggplot2} geoms [`wafflechart`](https://github.com/hrbrmstr/waffle)
 
 - `{ggplot}` Extras
 -  {ggthemes}
