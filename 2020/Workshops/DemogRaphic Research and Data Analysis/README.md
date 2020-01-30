@@ -17,89 +17,82 @@ For the session, you will be required to have R and Rstudio installed on your co
 
 ### Day 1: Introduction to Data Analysis
 
-- Introduction to R (syntax, packages {tidyverse}) and RStudio – editor
+-  Introduction to R (syntax, packages {tidyverse}) and RStudio – editor
 
-- Basic operations: assigning
+-  Basic operations: assigning
     
-- Data handling: import/export data to/from R
+-  Data handling: import/export data to/from R
 		
-- Lab Exercises
+-  Lab Exercises
 
-- Descriptive statistics in R
+-  Descriptive statistics in R
 
-- Contingency tables (cross-tabulations)
+-  Contingency tables (cross-tabulations)
 
-- {survey)} basics in R
+-  {survey)} basics in R
 
-- Practical session
+-  Practical session
 
 
 
                 
 ### Day 2: Data Visualization
 
-```
-09.00 – 09.45 	Recap of Day I Sessions
+-  Recap of Day I Sessions
 
-09.45 – 11.00 	Regression models in R
+-  Regression models in R
 
-11.00 – 12.30 	Practical Session
+-  Lab Exercises
 
-13.15 – 14.30 	Publication ready tables with {stargazar} {kableExtra}
+-  Publication ready tables with {stargazar} {kableExtra}
 
-14.30 - 16.30 	Practical Session
-```
-
-### Day 2: Data Visualization
-
-```
-09.00 – 09.45 	Recap of Day I Sessions
-
-09.00 - 09.45		Recap
-09.45 – 11.00		Introduction to Data visualization in R
-Basic data visualization principles
-Impressive data visualization showcases {tidytuesday} - https://nsgrantham.shinyapps.io/tidytuesdayrocks/
-11.00 – 12.30	{ggplot2} basics
-More {ggplot2} geoms {wafflechart}
-
-13.15 – 14.30	{ggplot} extras
-{ggthemes}
-{gganimate}
-14.30 – 15.30	Practical session
-15.30 – 17.00	Q & A, Closing
+-- Practical Session
 
 
+### Day 3: Data Visualization
 
-09.45 – 11.00 	Regression models in R
+-  Recap
 
-11.00 – 12.30 	Practical Session
+-  Introduction to Data visualization in R
 
-13.15 – 14.30 	Publication ready tables with {stargazar} {kableExtra}
+-  Basic data visualization principles
+-  Impressive data visualization showcases [{tidytuesday}](https://nsgrantham.shinyapps.io/tidytuesdayrocks/)
 
-14.30 - 16.30 	Practical Session
-```
+-  {ggplot2} basics
 
+-  More {ggplot2} geoms {wafflechart}
 
-- Recap
-- Introduction to Data visualization in R
-- Basic data visualization principles
-- Impressive data visualization showcases {[tidytuesday](https://nsgrantham.shinyapps.io/tidytuesdayrocks/)}
-- {ggplot2} basics
-- More {ggplot2} geoms {wafflechart}, {ggthemes}
-- {gganimate}
-- Population pyramids
+-  {ggplot} extras
+-  {ggthemes}
+-  {gganimate}
+
+-  Practical session
+
+-  Q & A
+
 - Save/Export plots
-- Daily Review
 
-## Day 3: Demographic Research
+-  Closing
 
-- Recap
-- {survey)} basics in R
-- Descriptive statistics in R
-- Contingency tables (cross-tabulations)
-- Regression models in R
-- Publication ready tables with {stargazar} {kableExtra}
-- Session Review
+
+## Day 4: Basic Demographic Methods
+
+
+-  Population pyramids
+
+-  Basic demographic  measures,
+
+-  Life expectancy
+
+-  Migration Expectancy
+
+-  Practical Session
+
+-  Standardization of demographic measures
+
+-  Session Review
+
+-  Closing 
 
 
 # Where to Find Help
