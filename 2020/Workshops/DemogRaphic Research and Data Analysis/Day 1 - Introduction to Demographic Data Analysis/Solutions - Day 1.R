@@ -69,5 +69,27 @@
     ## Alternatively, you could import directly from GitHub
     codebook <- read.csv(text=RCurl::getURL("https://raw.githubusercontent.com/eolamijuwon/Workshops_Seminars/master/master/2020/Workshops/DemogRaphic%20Research%20and%20Data%20Analysis/Data%20-%20Misc/Nigeria%20%5BDHS%5D.dta"), header=T)
     
+
+#### Exercise 1D.1
+
+## Create a vector *region* with information on the number and percentage of AGYW in each region.
+region_freq <- data.frame(table(agyw.clean$region)) %>% 
+      mutate (perc = Freq/sum(Freq)) %>% 
+      mutate (perc = perc * 100) %>% 
+      mutate (perc = round(perc, digits = 2))
+    
+    
+## Create a vector *residence* with information on the number and percentage of AGYW in each residence.
+residence_freq <- data.frame(table(agyw.clean$residence)) %>% 
+      mutate (perc = Freq/sum(Freq)) %>% 
+      mutate (perc = perc * 100) %>% 
+      mutate (perc = round(perc, digits = 2))
+
+## Create a vector *religion* with information on the number and percentage of AGYW in the different religious denomination.
+religion_freq <- data.frame(table(agyw.clean$religion)) %>% 
+      mutate (perc = Freq/sum(Freq)) %>% 
+      mutate (perc = perc * 100) %>% 
+      mutate (perc = round(perc, digits = 2))
+
     
     

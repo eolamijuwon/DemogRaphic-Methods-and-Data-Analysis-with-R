@@ -98,7 +98,7 @@ These packages are also embedded in the Tidyverse package and a detailed descrip
 - Load the `tidyverse` package
 
 
-
+#
 #  Data handling: import/export data to/from R
 
 You can load/export data into R from various data format including ".csv", ".txt", ".dta", ".sav", ".rjson" among others.
@@ -125,24 +125,30 @@ library(readstata13)
 
 
 You can browse the dataset with "View"
+
 `View(agyw.dataset)`
   
 You can check the structure of your dataset
+
 `str(agyw.dataset)`
   
 
 Alternatively you can use the "glimpse" function from the dplyr package to view the data structure
+
 `glimpse(agyw.dataset)`
   
 
 You can examine the first few observations in the dataset (could be 5/10/more) using the `head` function
+
 `head(agyw.dataset, n=30)`
   
   
 You can check how many rows(number of observations) are in your dataset using the `nrow` function 
+
 `nrow(agyw.dataset)`
   
-You can check how many rows(number of variables) are in your dataset using the `ncol` function 
+You can check how many rows(number of variables) are in your dataset using the `ncol` function
+
 `ncol(agyw.dataset)`
 
 
@@ -153,7 +159,7 @@ You can check how many rows(number of variables) are in your dataset using the `
 Data wrangling refers to the process of cleaning, restructuring and enriching the raw data available into a more usable format. This could include, creating new information from raw data, dropping values or organizing data.
 
 
-### Activity - Patterns of Contraceptive Use Among AGYW
+## Activity - Patterns of Contraceptive Use Among AGYW
 
 Clean the *agyw.dataset* and assign it to *agyw.clean*
 
@@ -166,6 +172,8 @@ Clean the *agyw.dataset* and assign it to *agyw.clean*
   - *teen_educ* with categories "< Secondary" and "Secondary +"
   
   - *religion* with categories "Catholic", "Other Christian", "Muslim", and "Others"
+  
+  - *weight* to adjust for complex design
 
 - Rename vectors/variables `rename()`:
 
@@ -177,7 +185,6 @@ Clean the *agyw.dataset* and assign it to *agyw.clean*
 
 
 ```{r}
-
 agyw.clean <- agyw.dataset %>% 
 
               ## Keep only AGYW "at risk"" of pregnancy
@@ -201,84 +208,86 @@ agyw.clean <- agyw.dataset %>%
                                                 "Others" = (v130 == "traditionalist" |
                                                           v130 == "other"),
                                                 .default = NA)) %>% 
+              mutate (weight = v005/10^6) %>% 
+              
               rename (region = v024,
                       residence = v025) %>% 
                                                 
               select (c("mCuse", "religion", "region",
-                        "residence"))
-```
-
-
-
--  Descriptive statistics in R
-
--  Contingency tables (cross-tabulations)
-
--  Analysis of Complex Surveys with [`survey`](http://asdfree.com/demographic-and-health-surveys-dhs.html)
-
-
-
-TeenData <- read.csv(".\\teenageData.csv")
-
-#   Note that <- is an assignment function (just as = in STATA)
-
-#   You could also read the data into RStudio using the read_csv function in readr package
-
-TeenDatR <- read_csv ("C:\\Users\\eOlamijuwon\\OneDrive\\Research\\Computational Social Science\\Eswatini UseR\\Intro to R\\teenageData.csv")
-
-
-# since the data is also available online, we could also read it directly from github
+                        "residence", "weight", "v021"))
+                        
+agyw.clean$strata <- do.call( paste , agyw.clean[ , c( 'region' , 'residence' ) ] )
 
 ```
 
 
+#
+# Descriptive statistics in R
 
+```{r}
 
-## Descriptive statistics in R
+cont_use <- data.frame(table(agyw.clean$mCuse)) %>% 
+            mutate(perc = round((Freq/sum(Freq))*100, digits = 2))
+```
 
-## Contingency tables (cross-tabulations)
+OR
 
-## Analysis of Complex Surveys with [`survey`](http://asdfree.com/demographic-and-health-surveys-dhs.html)
+```{r}
 
+cont_use <- data.frame(table(agyw.clean$mCuse)) %>% 
+            mutate (perc = Freq/sum(Freq)) %>% 
+            mutate (perc = perc * 100) %>% 
+            mutate (perc = round(perc, digits = 2))
+            
+```
 
-
-
-
-
-# Activity 1
-
-Clean Data - We want study teenage pregnancy in Eswatini. That is, our sample should be teenagers
-
-From the old `TeenData` data, create a new dataset ::TeenPreg:: focusing on:
-
-  - Teenagers that have never given birth (CM1)
+#### Exercise 1D.1
   
-  - Create a var `ever_had_sex` from -Age at first sex (SB1)
-  
-    Note: Variable names cannot have spaces
-    
-  - Create a var `education` [<Sec/Sec+] from Highest educational attain (welevel).
-  
-  - Create a var `violence_atti [No support/Support Violence]` from DV1A-DV1I
-  
-  - Drop all other variables and keep [ever_had_sex, education, violence_atti]
-  
-  We will use the dplyr package [filter, select, mutate]
+- Create a vector **region_freq** with information on the number and percentage of AGYW in each region.
+
+- Create a vector **residence_freq** with information on the number and percentage of AGYW in each residence.
+
+- Create a vector **religion_freq** with information on the number and percentage of AGYW in the different religious denomination.
 
 
-  
-  
-NOTE:: Solutions to Practice exercise:
+#
+# Contingency tables (cross-tabulations)
 
-  - [[Practice Exercise I](https://github.com/eolamijuwon/EswatiniUser/blob/master/Intro%20to%20R/Solutions/Practice%20Exercise%20I.R/)]
-  
-  - [[Practice Exercise II](https://github.com/eolamijuwon/EswatiniUser/blob/master/Intro%20to%20R/Solutions/Practice%20Exercise%20II.R)]
-  
-  - [[Class Activity](https://github.com/eolamijuwon/EswatiniUser/blob/master/Intro%20to%20R/Solutions/Practice%20Exercise%20II.R)]
-  
 
-# Acknowledgements
 
-Some of the materials used in this session were adapted from:
+#
+# Analysis of Complex Surveys with [`survey`](http://asdfree.com/demographic-and-health-surveys-dhs.html)
 
-- https://www.tutorialspoint.com/r/r_packages.htm
+A complex sample survey designed to generalize to the residents of various countries.
+
+
+```{r}
+install.packages("survey")
+
+library(survey)
+
+dhs_design <- svydesign( 
+  ~ v021, strata = ~strata, 
+        data = agyw.clean, weights = ~weight)
+
+table_mCuse <- agyw.clean %>% 
+  count(mCuse) %>% 
+  mutate(perc = round((n/sum(n))*100, digits = 2)) %>% 
+  mutate("weighted_perc" = round((svytable ( ~ mCuse, dhs_design, Ntotal=TRUE)) *100, digits = 2)) %>% 
+  rename("Characteristic" = mCuse)
+  
+table_mCuse
+
+```
+
+#### Exercise 1F.1
+  
+- Create a dataframe **table_region** with information on:
+
+  - The number (freq) of AGYW in the different region.
+  
+  - Unweighted percentage distribution of AGYW in the regions.
+  
+  - Weighted percentage distribution of AGYW in the regions.
+
+- Repeat the above for **table_residence**, and **table_religion**
