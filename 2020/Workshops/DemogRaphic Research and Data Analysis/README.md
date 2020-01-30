@@ -17,8 +17,10 @@ For the session, you will be required to have R and Rstudio installed on your co
 
 # Outline of Workshop
 
-## Day 1: Introduction to Demographic Data Analysis
+## Day 1: Introduction to Data Analysis
 
+10-15 – 11.30: 	Introduction to R (syntax, packages {tidyverse}) and RStudio – editor
+                Basic operations: assigning
 - Introduction to R (syntax, packages {tidyverse}) and RStudio - editor
 - Data handling: import/export data to/from R
 - Basic operations: assigning
