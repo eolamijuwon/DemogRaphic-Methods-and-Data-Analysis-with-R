@@ -18,14 +18,18 @@ For the session, you will be required to have R and Rstudio installed on your co
 ## Day 1: Introduction to Data Analysis
 
 10-15 – 11.30: 	Introduction to R (syntax, packages {tidyverse}) and RStudio – editor
+
     Basic operations: assigning
+    
     Data handling: import/export data to/from R
 
 
 11-30 – 12.30: 	Lab Exercise
 
 13-15 – 14.30: 	Descriptive statistics in R
+
     Contingency tables (cross-tabulations)
+    
     {survey} basics in R
 
 | 14:30 – 16.30: 	Lab Exercise
