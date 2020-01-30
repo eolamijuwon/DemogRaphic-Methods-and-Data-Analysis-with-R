@@ -17,17 +17,6 @@ For the session, you will be required to have R and Rstudio installed on your co
 
 ## Day 1: Introduction to Data Analysis
 
-
-<<<<<<< HEAD
-
-=======
-		Basic operations: assigning
-    
-		Data handling: import/export data to/from R
->>>>>>> e0b67b193fb7c647a3313ae22fa5a94005ba5e42
-
-## Day 1: Introduction to Data Analysis
-
 ```
 10-15 – 11.30: 	Introduction to R (syntax, packages {tidyverse}) and RStudio – editor
 
@@ -36,17 +25,17 @@ For the session, you will be required to have R and Rstudio installed on your co
 		Data handling: import/export data to/from R
 		
 		
-11.30 – 12.30	  Practical session
+11.30 – 12.30   Practical session
 
 
-13.15 – 14.30:	Descriptive statistics in R
+13.15 – 14.30:    Descriptive statistics in R
 
     Contingency tables (cross-tabulations)
     
     {survey)} basics in R
     
     
-14.30 – 16.30	  Practical session
+14.30 – 16.30   Practical session
 ```
 
 
