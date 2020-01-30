@@ -24,6 +24,8 @@ For the session, you will be required to have R and Rstudio installed on your co
     -  R packages -e.g. [`tidyverse`](https://www.tidyverse.org/learn/) 
     
 -  Data handling: import/export data to/from R
+
+-  Data Wrangling/Management
 		
 -  Descriptive statistics in R
 

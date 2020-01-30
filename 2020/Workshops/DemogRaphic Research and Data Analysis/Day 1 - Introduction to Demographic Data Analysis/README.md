@@ -63,7 +63,7 @@ Note that we used a function *`print`* in the above examples. Functions are buil
 
 #### Exercise 1A.1
 
-- Write a function to:
+Write a function to:
 
   - Find the difference between 125 and its 3/5. Using the same function, find the difference between 50 and it's 1/5.
   
@@ -100,15 +100,127 @@ These packages are also embedded in the Tidyverse package and a detailed descrip
 
 ##  Data handling: import/export data to/from R
 
-We can load data into R from various data format including ".csv", ".txt", ".dta", ".sav", ".rjson" among others.
+You can load/export data into R from various data format including ".csv", ".txt", ".dta", ".sav", ".rjson" among others.
 
-For this activity, we will use the [[teenageData](https://github.com/eolamijuwon/EswatiniUser/blob/master/Intro%20to%20R/teenageData.csv/)] which is a subset data extracted from the 2014 Multiple Indicator Cluster Survey of Eswatini. The sample data contains basic demographic features of teenagers [15-19 years] who were in Eswatini at the time of data collection. The MICS full dataset can be downloaded on the [[UNICE website](https://mics.unicef.org/surveys/)].
+For this activity, we will use the Adolescent Girls and Young Women (AGYW) [[Dataset](https://github.com/eolamijuwon/Workshops_Seminars/blob/master/2020/Workshops/DemogRaphic%20Research%20and%20Data%20Analysis/Data%20-%20Misc/Nigeria%20%5BDHS%5D.dta)]. The dataset is a subset of the Women's recode Nigeria Demographic and Health Survey published in 2018. The dataset was obtained with permission from the [[DHS Website](https://dhsprogram.com/)].
 
-- Activity: Import the teenageData into RStudio and assign it to ::TeenData::
+The subset data contains basic demographic and health information of adolescent girls and young women aged 15 -24 years who were usual residents or visitors at an household selected for interview. The full NDHS dataset can be downloaded on the [[DHS Website](https://dhsprogram.com/)].
+
+Since the AGYW dataset is stata formatted, a function that can open the dataset is required.
+We could get one from the `readstata13` package. 
+
+*Remember that the package needs to be installed and loaded*
+
+```{r}
+install.packages("readstata13")
+library(readstata13)
+```
+
+#### Exercise 1A.3
+
+Using your background knowledge of how functions work, use the `read.dta13()` function from `readstata13` package to load the AGYW dataset (downloaded on your computer) and assign it to *agyw.dataset*
+
+*Example:* agmy.data <- `"C:/Users/Nigeria/Ekiti State/Federal University Oye/Demo-SocStat/Nigeria [DHS].dta"`
+
+
+You can browse the dataset with "View"
+
+`View(agyw.dataset)`
+  
+You can check the structure of your dataset
+
+`str(agyw.dataset)`
+  
+
+Alternatively you can use the "glimpse" function from the dplyr package to view the data structure
+
+`glimpse(agyw.dataset)`
+  
+
+You can examine the first few observations in the dataset (could be 5/10/more) using the `head` function
+
+`head(agyw.dataset, n=30)`
+  
+  
+You can check how many rows(number of observations) are in your dataset using the `nrow` function 
+  
+`nrow(agyw.dataset)`
+  
+You can check how many rows(number of variables) are in your dataset using the `ncol` function 
+
+`ncol(agyw.dataset)`
+
+
+
+
+##  Data Wrangling/Management
+
+Data wrangling refers to the process of cleaning, restructuring and enriching the raw data available into a more usable format. This could include, creating new information from raw data, dropping values or organizing data.
+
+
+### Activity - Patterns of Contraceptive Use Among AGYW
+
+Clean the *agyw.dataset* and assign it to *agyw.clean*
+
+- Keep only AGYW who are not "at risk of pregnancy" `filter()`. That is, not currently pregnant, sexually active (in the last one month), and not currently amenorrheic. See [Measuring contraceptive prevalence among women who are at risk of pregnancy](https://doi.org/10.1016/j.contraception.2017.06.007) for details.
+
+- Create a new vector/variabel `mutate()`
+  
+  - *mCuse* with categories Using or not using modern contraception
+  
+  - *teen_educ* with categories "< Secondary" and "Secondary +"
+  
+  - *religion* with categories "Catholic", "Other Christian", "Muslim", and "Others"
+
+- Rename vectors/variables `rename()`:
+
+  - *v024* = "religion"
+  
+  - *v025* = "residence"
+  
+- Keep only vectors/variables of interest `select()`
+
 
 ```{r}
 
-# Please change all directory names accordingly
+agyw.clean <- agyw.dataset %>% 
+
+              ## Keep only AGYW "at risk"" of pregnancy
+              filter (v213 == "no or unsure") %>% ## AGYW who are not currently pregnant
+              filter (v529 == 0) %>%              ## Sexually active AGYW (< 1 month) %>% 
+              filter (v405 == "no") %>%
+              
+              mutate (mCuse = ifelse((v364 == "using modern method"),
+                                      "Using Modern Contraceptives",
+                                      "Not Using Modern Contraceptives")) %>% 
+                                      
+              ## Complete the line of code below
+              #mutate (teen_educ = ifelse()) %>% 
+              
+              ##
+              ## To reclassify vectors to more than two categories,
+              ## we you use derivedFactor() function from the *mosaic* package
+              mutate (religion = derivedFactor("Catholic" = (v130 == "catholic"),
+                                                "Other Christian" = (v130 == "other christian"),
+                                                "Muslim" = (v130 == "islam"),
+                                                "Others" = (v130 == "traditionalist" |
+                                                          v130 == "other"),
+                                                .default = NA)) %>% 
+              rename (region = v024,
+                      residence = v025) %>% 
+                                                
+              select (c("mCuse", "religion", "region",
+                        "residence"))
+```
+
+
+
+-  Descriptive statistics in R
+
+-  Contingency tables (cross-tabulations)
+
+-  Analysis of Complex Surveys with [`survey`](http://asdfree.com/demographic-and-health-surveys-dhs.html)
+
 
 
 TeenData <- read.csv(".\\teenageData.csv")
@@ -124,28 +236,7 @@ TeenDatR <- read_csv ("C:\\Users\\eOlamijuwon\\OneDrive\\Research\\Computational
 
 ```
 
-  # You can browse the dataset with "View"
-  View(TeenData)
-  
-  # You can check the structure of your dataset
-  str(TeenData)
-  
-  # Alternatively you can use the "glimpse" function from the dplyr package to view the data structure
-  
-  glimpse(TeenData)
-  
-  # You can examine the first few observations in the dataset (could be 5/10/more) using the `head` function
-  
-  head(TeenData, n=30) 
-  
-  # You can check how many rows(number of observations) are in your dataset using the `nrow` function 
-  
-  nrow(TeenData)
-  
-  # You can check how many rows(number of variables) are in your dataset using the `nrow` function 
-  ncol(TeenData)
 
-##  Data Wrangling/Management
 
 
 ## Descriptive statistics in R

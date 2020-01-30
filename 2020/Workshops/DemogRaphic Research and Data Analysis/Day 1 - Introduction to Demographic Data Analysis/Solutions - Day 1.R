@@ -43,3 +43,31 @@
 ##  which is greater than 16 as much as it is less than 50.
     
     quiz(16, 50)
+
+    
+    
+    
+## Solution 1A.2
+
+## Install the `tidyverse` package
+    install.packages("tidyverse")
+
+## Load the `tidyverse` package
+    library(tidyverse)
+    
+## Solution 1A.3
+    
+##  Using your background knowledge of how functions work, use the 
+##  `read.dta13()` function from `readstata13` package to load the 
+##  AGYW dataset (downloaded on your computer) and assign it to "agyw.dataset"
+    install.packages("readstata13")
+    library(readstata13)
+    
+    ## You have to change the directory to the file directory on your PC.
+    agyw.dataset <- read.dta13("./2020/Workshops/DemogRaphic Research and Data Analysis/Data - Misc/Nigeria [DHS].dta")
+    
+    ## Alternatively, you could import directly from GitHub
+    codebook <- read.csv(text=RCurl::getURL("https://raw.githubusercontent.com/eolamijuwon/Workshops_Seminars/master/master/2020/Workshops/DemogRaphic%20Research%20and%20Data%20Analysis/Data%20-%20Misc/Nigeria%20%5BDHS%5D.dta"), header=T)
+    
+    
+    
