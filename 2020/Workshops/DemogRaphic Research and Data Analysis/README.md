@@ -25,19 +25,13 @@ For the session, you will be required to have R and Rstudio installed on your co
     
 -  Data handling: import/export data to/from R
 		
--  Lab Exercises
-
 -  Descriptive statistics in R
 
 -  Contingency tables (cross-tabulations)
 
 -  Analysis of Complex surveys with [`survey`](http://asdfree.com/demographic-and-health-surveys-dhs.html)
 
--  Practical session
-
-- 
-
--  `[tidyverse](https://www.tidyverse.org/learn/)`
+-  Lab Exercises
 
                 
 ### Day 2: Data Visualization
@@ -46,71 +40,82 @@ For the session, you will be required to have R and Rstudio installed on your co
 
 -  Regression models in R
 
+-  Publication ready tables with [`stargazer`](https://www.jakeruss.com/cheatsheets/stargazer/) [`kableExtra`](http://haozhu233.github.io/kableExtra/awesome_table_in_html.html)
+
 -  Lab Exercises
-
--  Publication ready tables with [`stargazar`](https://www.jakeruss.com/cheatsheets/stargazer/) [`kableExtra`](http://haozhu233.github.io/kableExtra/awesome_table_in_html.html)
-
--  Practical Session
 
 
 ### Day 3: Data Visualization
 
--  Recap
+-   Recap
 
--  Introduction to Data visualization in R
+-   Introduction to Data visualization in R
 
--  Basic data visualization principles
+-   Basic data visualization principles
 
--  Impressive data visualization showcases [{tidytuesday}](https://nsgrantham.shinyapps.io/tidytuesdayrocks/), [{R-Graph Gallery}](https://www.r-graph-gallery.com/index.html)
+-   Impressive data visualization showcases [{tidytuesday}](https://nsgrantham.shinyapps.io/tidytuesdayrocks/), [{R-Graph Gallery}](https://www.r-graph-gallery.com/index.html)
 
--  {ggplot2} basics
+-   `ggplot2` basics
 
--  More {ggplot2} geoms [`wafflechart`](https://github.com/hrbrmstr/waffle)
+-   `ggplot2` Extras - [Extensions](http://www.ggplot2-exts.org/gallery/)
 
-- `{ggplot}` Extras
--  {ggthemes}
--  {gganimate}
-
--  Practical session
+    -  [`ggthemes`](https://ggplot2.tidyverse.org/reference/ggtheme.html)
+    
+    -  [`gganimate`](https://gganimate.com/articles/gganimate.html)
+    
+    -  geoms [`waffle`](https://github.com/hrbrmstr/waffle)
 
 -  Save/Export plots
 
--  Closing
+-  Lab Exercises
 
 
-## Day 4: Basic Demographic Methods
+### Day 4: Basic Demographic Methods
 
+-  Population Pyramids with `{ggplot}`
 
--  Population pyramids
+-  Basic Demographic Measures
 
--  Basic demographic  measures,
-
--  Life expectancy
+-  Life Expectancy
 
 -  Migration Expectancy
 
 -  Practical Session
 
--  Standardization of demographic measures
+-  Standardization of Demographic Measures
 
--  Session Review
+-  Lab Exercises
 
--  Q & A
 
--  Closing 
+
+### Day 5: Introduction to Computational/Digital Demography
+
+-  Impressive Showcase of Computational and Digital Demographic Studies
+
+-  Presentation: Advancing Sexuality Education for Young African Adults in the Digital Age
+
+-  Collecting Twitter Data with [`rtweet`](https://rtweet.info/)
+
+-  Text Mining and Sentiment Analysis using [`tidytext`](https://www.tidytextmining.com/tidytext.html)
+
+-  Lab Exercises
+
+
 
 
 # Where to Find Help
 
 Help is always online.
 
-Google, StackOVerFlow, Twitter, among others.
+Google, StackOverFlow, Twitter, among others.
 
 You can also get help with a specific function by using the *?* function
 
 ```{r}
 ?mutate
 ```
+
+Cheat Sheets
 
 Efficient R programming [Online Copy](https://csgillespie.github.io/efficientR/)
 
@@ -119,14 +124,14 @@ R for Data Science [Online Copy](https://r4ds.had.co.nz/)
 
 # Acknowledgement
 
-Some of the materials used in this workshop are adapted from the Barcelona Summer School of Demography. The [BSSD](https://ced.uab.cat/en/courses/barcelona-summer-school-of-demography/) offers some excellent training in demographic data analysis and visualization. The summer school is currently accepting applications and details of the school as well as the module can be found [[here](https://ced.uab.cat/en/courses/barcelona-summer-school-of-demography/)]
+Some of the materials used in this workshop are adapted from the Barcelona Summer School of Demography. The [BSSD](https://ced.uab.cat/en/courses/barcelona-summer-school-of-demography/) offers some excellent training in demographic data analysis and visualization. The summer school is currently accepting applications and details of the school, as well as the module, can be found [[here](https://ced.uab.cat/en/courses/barcelona-summer-school-of-demography/)]
 
 
 
 # Contact
 
-Twitter: [[@eOlamijuwon](https://twitter.com/eolamijuwon/)]
+Twitter: [@eOlamijuwon](https://twitter.com/eolamijuwon/)
 
-Email: [emmanuel[at]olamijuwon[dot]com
+Email: *emmanuel[at]olamijuwon[dot]com*
 
-Website: [[e.Olamijuwon.com](https://e.olamijuwon.com/)]
+Website: [https://e.olamijuwon.com/](https://e.olamijuwon.com/)
