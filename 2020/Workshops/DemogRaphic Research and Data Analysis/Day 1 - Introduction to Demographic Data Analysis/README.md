@@ -195,6 +195,7 @@ agyw.clean <- agyw.dataset %>%
               mutate (mCuse = ifelse((v364 == "using modern method"),
                                       "Using Modern Contraceptives",
                                       "Not Using Modern Contraceptives")) %>% 
+              mutate (mCuse = as.factor(mCuse)) %>% 
                                       
               ## Complete the line of code below
               #mutate (teen_educ = ifelse()) %>% 
@@ -286,6 +287,7 @@ For example, we could be interested in the level of modern contraceptive use amo
 
 A complex sample survey designed to generalize to the residents of various countries.
 
+## Univariate Analysis
 
 ```{r}
 install.packages("survey")
@@ -306,7 +308,51 @@ table_mCuse
 
 ```
 
+## Bivariate Analysis
+
+```{r}
+
+### Calculate Row Percentages
+rowBiv_education <- svyby( ~ mCuse, ~ region,  dhs_design, svymean) %>% 
+    rename( "perc_Using" = "mCuseUsing Modern Contraceptives",
+            "perc_notUsing" = "mCuseNot Using Modern Contraceptives") %>% 
+    dplyr::select("region", "perc_Using", "perc_notUsing") %>% 
+    mutate (perc_Using = round((perc_Using * 100), digits = 2)) %>% 
+    mutate (perc_notUsing = round((perc_notUsing * 100), digits = 2)) %>% 
+    mutate (perc_Using = paste0(perc_Using, "%")) %>% 
+    mutate (perc_notUsing = paste0(perc_notUsing, "%"))
+
+View(rowBiv_education)   
+
+### Calculate Column Percentages
+colBiv_education <- svyby( ~ mCuse, ~ region,  dhs_design, svytotal) %>% 
+    rename (`Not Using mContr` =  `mCuseNot Using Modern Contraceptives`,
+            `Using mContr` = `mCuseUsing Modern Contraceptives`) %>% 
+    
+    mutate (wPerc_notUsing = round(((`Not Using mContr`/sum(`Not Using mContr`))*100), 2),
+            wPerc_Using = round(((`Using mContr`/sum(`Using mContr`))*100), 2)) %>% 
+          
+    mutate (wPerc_notUsing = paste0(wPerc_notUsing, "%"),
+            wPerc_Using = paste0(wPerc_Using, "%")) %>% 
+    select (c("region", "wPerc_Using", "wPerc_notUsing"))
+View(colBiv_education)   
+
+```
+
 #### Exercise 1F.1
+  
+- Create a dataframe **table_region** with information on:
+
+  - The number (freq) of AGYW in the different region.
+  
+  - Unweighted percentage distribution of AGYW in the regions.
+  
+  - Weighted percentage distribution of AGYW in the regions.
+
+- Repeat the above for **table_residence**, and **table_religion**
+
+
+#### Exercise 1F.2
   
 - Create a dataframe **table_region** with information on:
 
