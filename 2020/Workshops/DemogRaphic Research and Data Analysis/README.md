@@ -23,13 +23,15 @@ For the session, you will be required to have R and Rstudio installed on your co
 
     -  R packages -e.g. [`tidyverse`](https://www.tidyverse.org/learn/) 
     
--  Data handling: import/export data to/from R
+-   Data handling: import/export data to/from R
 
--  Data Wrangling/Management
+-   Data Wrangling/Management
 		
--  Descriptive statistics in R
+-   Descriptive statistics in R
 
--  Contingency tables (cross-tabulations)
+    - Univariate 
+    
+    - Contingency tables (cross-tabulations)
 
 -  Analysis of Complex Surveys with [`survey`](http://asdfree.com/demographic-and-health-surveys-dhs.html)
 
@@ -42,7 +44,7 @@ For the session, you will be required to have R and Rstudio installed on your co
 
 -  Regression models in R
 
--  Publication ready tables with [`stargazer`](https://www.jakeruss.com/cheatsheets/stargazer/) [`kableExtra`](http://haozhu233.github.io/kableExtra/awesome_table_in_html.html)
+-  Publication ready tables with [`stargazer`](https://www.jakeruss.com/cheatsheets/stargazer/), [`kableExtra`](http://haozhu233.github.io/kableExtra/awesome_table_in_html.html), [`compareGroups`](https://github.com/isubirana/compareGroups), [`summarytools`](https://github.com/dcomtois/summarytools)
 
 -  Lab Exercises
 

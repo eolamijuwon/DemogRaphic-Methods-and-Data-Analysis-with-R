@@ -117,7 +117,7 @@ install.packages("readstata13")
 library(readstata13)
 ```
 
-#### Exercise 1A.3
+#### Exercise 1B.1
 
 - Using your background knowledge of how functions work, use the `read.dta13()` function from `readstata13` package to load the AGYW dataset (downloaded on your computer) and assign it to *agyw.dataset*
 
@@ -224,6 +224,19 @@ agyw.clean$strata <- do.call( paste , agyw.clean[ , c( 'region' , 'residence' ) 
 #
 # Descriptive statistics in R
 
+Descriptive statistics are used to describe the basic features of the data in a study. It involves describing, showing or summarizing the data in a meaningful way. They provide simple summaries about the sample and the measures.
+
+Descriptive statistics therefore enables us to present the data in a more meaningful way, which allows simpler interpretation of the data. Descriptive statistics are very important it would be hard to visualize what a data is showing by simply presenting raw data, especially if there was a lot say 3,500 students.
+
+
+## Univariate Analysis
+
+Univariate analysis involves describing the distribution of a single variable, including its central tendency (including the mean, median, and mode) and dispersion (including the range and quartiles of the data-set), measures of spread (such as the variance and standard deviation). Distributions may also be displayed using percentages.  For example, you could use percentages to describe the:
+
+- percentage of AGYW in different categories of modern contraceptive use
+- percentage of AGYW in different regions
+- percentage of AGYW in different levels of education
+
 ```{r}
 
 cont_use <- data.frame(table(agyw.clean$mCuse)) %>% 
@@ -241,6 +254,9 @@ cont_use <- data.frame(table(agyw.clean$mCuse)) %>%
             
 ```
 
+*Think about `%>%` function as "then". E.g. Tabulate modern contraceptive use, then calculate the percentage distribution and assign it to `perc`, then multiply by 100, then round to 2 d.p.
+
+
 #### Exercise 1D.1
   
 - Create a vector **region_freq** with information on the number and percentage of AGYW in each region.
@@ -253,6 +269,16 @@ cont_use <- data.frame(table(agyw.clean$mCuse)) %>%
 #
 # Contingency tables (cross-tabulations)
 
+Descriptive statistics may also be used to describe the relationship between pairs of variables. 
+
+This could include:
+- Cross-tabulations and contingency tables (a pair of categorical variables)
+- Graphical representation via scatterplots (a pair of continuous variables)
+
+For example, we could be interested in the level of modern contraceptive use among AGYW by:
+- educational attainment
+- place of residence
+- region of residence
 
 
 #
