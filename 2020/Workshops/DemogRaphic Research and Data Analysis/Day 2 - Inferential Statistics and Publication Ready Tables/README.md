@@ -196,7 +196,7 @@ stargazer(mCuse_logReg_I, mCuse_logReg_II,
                              "Other Christian",
                              "Muslim", "Others"),
           star.cutoffs = c(0.05, 0.01, 0.001),
-          out = "./2020/Workshops/DemogRaphic Research and Data Analysis/Data - Misc/Poisson_Models.html")
+          out = "./2020/Workshops/DemogRaphic Research and Data Analysis/Data - Misc/TeenPreg_logitModel.html")
 
 ```    
   
