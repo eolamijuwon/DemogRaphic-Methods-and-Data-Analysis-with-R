@@ -74,6 +74,10 @@ agyw_clean <- agyw_dataset %>%
 
 ```
 
+#
+
+# Bivariate Associations
+
 In the introduction session, we examined the prevalence of current modern contraceptive use across sociodemographic characteristics including education, place of residence, region of residence and religious affiliation. In this module, we will examine bivariate relationships using *chisquare* since the variables are categorical. Since we are still working with the DHS, we will also take into consideration, the complex design of the survey.
 
 ```{r}
@@ -117,93 +121,48 @@ Estimate the prevalence of modern contraceptive use by region, place of residenc
 
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+# Regression Models
 
+Regression analysis is a statistical technique for estimating the association between two or more quantitative variables. With regression analysis, we are interested in the type as well as the degree of association between (simple regression) or among (multiple regression) variables. For example, one might be interested in understanding the underlying effect of an (independent) variable on another (dependent variable) for example, the effect of women’s education/empowerment on the adoption of modern contraceptive use. At the same time, one might also want to assess the “statistical significance” of the estimated relationships, that is, the degree of confidence that the true relationship is close to the estimated relationship. Although the independent variables may explain the underlying variations in the dependent variable, it does not automatically imply causation.
 
-Note that we used a function *`print`* in the above examples. Functions are built in capabilities of R (base R) or could be gotten from libraries (see ##packages) or you could write one. Executing a function is reffered to as *calling* the function. Most functions can take several arguments (details can be found on the package website).
+Some common regression models in social sciences are:
 
-## R Functions
+- Linear regression model
 
+- Logistic regression model
 
-#### Exercise 1A.1
-
-Write a function to:
-
-  - Find the difference between 125 and its 3/5. Using the same function, find the difference between 50 and it's 1/5.
+  - Ordinary/binary logistic model `binomial(link = "logit")`
   
-  - Find a number which is greater than 17 as much as it is less than 31. Using the same function, find the number which is greater than 16 as much as it is less than 50.
-
-
-## R packages
-
-R packages are a collection of R *functions*, *complied code* and *sample data*. They are stored under a directory called "library" in the R environment. By default, R installs a set of packages during installation. You can view already installed packages using the `installed.packages()` function. More packages can be installed/added after using `install.packages("package.name")` or `devtools::install_github("repository/package.name")`. 
-
-
-Some very useful R packages in applied demography includes [`DemoDecomp`](https://github.com/timriffe/DemoDecomp/), [`demography`](https://github.com/robjhyndman/demography), [`demogR`](https://www.jstatsoft.org/article/view/v022i10), among many others.
-There's also the [`DHS.rates`](https://doi.org/10.1371/journal.pone.0216403) package for calculating fertility indicators, such as the total fertility rate, general fertility rate, and age-specific fertility rates, and childhood mortality indicators, from the DHS data.
-
-A complete list of R packages can be found on the RStudio [[website](https://rstudio.com/products/rpackages/)].
-
-
-At every start of the R studio, only the default packages will be loaded by default. Other packages which are already installed have to be loaded explicitly using the `library(package.name)` function. *Think about digging a well. You only have to dig once `installed.packages()`, fetch water from the well everytime you need a fresh water `library(package.name)` and drink a glass/call a function whenever you are thirsty.*
-
-
-Some common R packages are
-  -  *ggplot2*
-  -  *dplyr*
-  -  *tidyr*
-  -  *readr*
+  - Complementary logistic model `binomial(link = "cloglog")`
   
-These packages are also embedded in the Tidyverse package and a detailed description of can be found on the package  [[website](https://www.tidyverse.org/packages/)].
-
-
-#### Exercise 1A.2
+  - Ordinal logistic regression model `polr`
   
-- Install the `tidyverse` and `mosaic` package
+  - Multinomial logistic regression model
 
-- Load the `tidyverse` and `mosaic` package
+- Poisson regression model `poisson(link = "log")`
+
+  - Quasipoisson model `quasipoisson(link = "log")`
+  
+  - Negative binomial model `glm.nb` from `MASS` package
+  
+- Survival models
+
+  - Cox-proportional hazard models
+  
+  - Competing risks models
 
 
-#
-#  Data handling: import/export data to/from R
-
-You can load/export data into R from various data format including ".csv", ".txt", ".dta", ".sav", ".rjson" among others.
-
-For this activity, we will use the Adolescent Girls and Young Women (AGYW) [[Dataset](https://github.com/eolamijuwon/Workshops_Seminars/blob/master/2020/Workshops/DemogRaphic%20Research%20and%20Data%20Analysis/Data%20-%20Misc/Nigeria%20%5BDHS%5D.dta)]. The dataset is a subset of the Women's recode Nigeria Demographic and Health Survey published in 2018. The dataset was obtained with permission from the [[DHS Website](https://dhsprogram.com/)].
-
-The subset data contains basic demographic and health information of adolescent girls and young women aged 15 -24 years who were usual residents or visitors at an household selected for interview. The full NDHS dataset can be downloaded on the [[DHS Website](https://dhsprogram.com/)].
-
-Since the AGYW dataset is stata formatted, a function that can open the dataset is required.
-We could get one from the `readstata13` package. 
-
-*Remember that the package needs to be installed and loaded*
-
-```{r}
-
-install.packages("readstata13")
-
-library(readstata13)
-
-```
+    
+    
+    
+# Publication Ready Tables
+    
+    
+    
+    
+    
+    
+    
 
 #### Exercise 1B.1
 
