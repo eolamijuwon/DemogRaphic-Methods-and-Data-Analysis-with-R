@@ -7,9 +7,9 @@ Date: "11 February 2020"
 
 #
 
-![Image]("./MigrationFlows.PNG")
+![Image]("MigrationFlows.PNG")
 
-![Image]("./_ImmigrationFlows_ZA.PNG")
+![Image]("_ImmigrationFlows_ZA.PNG")
 
 # Recap
 
