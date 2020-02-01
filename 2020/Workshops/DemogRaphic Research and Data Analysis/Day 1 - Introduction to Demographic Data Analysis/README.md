@@ -350,7 +350,7 @@ View(colBiv_education)
 
 #### Exercise 1F.1
   
-- Create a dataframe **table_region** with information on:
+- Create a dataframe `table_region` with information on:
 
   - The number (freq) of AGYW in the different region.
   
@@ -358,19 +358,21 @@ View(colBiv_education)
   
   - Weighted percentage distribution of AGYW in the regions.
 
-- Repeat the above for **table_residence**, and **table_religion**
+- Repeat the above for `table_residence`, and `table_religion`
 
 
 #### Exercise 1F.2
   
-- Create a dataframe **rowBiv_region** with information on:
+- Create a dataframe `rowBiv_region` with information on:
 
-  - *Unweighted* number (freq) of AGYW in the different region who are using modern contraceptives.
+  - **Unweighted** number (freq) of AGYW in the different region who are using modern contraceptives.
   
-  - *Unweighted* number (freq) of AGYW in the different region who are not using modern contraceptives.
+  - **Unweighted** number (freq) of AGYW in the different region who are not using modern contraceptives.
+  
+    - *Hint: You may need to install a new package*
   
   - **Weighted** *(row)* percentage distribution of AGYW in the regions who are using modern contraceptives.
 
   - **Weighted** *(row)* percentage distribution of AGYW in the regions who are not using modern contraceptives.
 
-- Repeat the above for **rowBiv_residence**, and **rowBiv_religion**
+- Repeat the above for `rowBiv_residence`, and `rowBiv_religion`
