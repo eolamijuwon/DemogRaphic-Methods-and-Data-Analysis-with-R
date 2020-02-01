@@ -209,16 +209,17 @@ agyw.clean <- agyw.dataset %>%
                                                 "Others" = (v130 == "traditionalist" |
                                                           v130 == "other"),
                                                 .default = NA)) %>% 
-              mutate (weight = v005/10^6) %>% 
+                                                
+              ##
+              ##
+              ##
               
               rename (region = v024,
                       residence = v025) %>% 
                                                 
               select (c("mCuse", "religion", "region",
-                        "residence", "weight", "v021"))
+                        "residence", "v005", "v021"))
                         
-agyw.clean$strata <- do.call( paste , agyw.clean[ , c( 'region' , 'residence' ) ] )
-
 ```
 
 
@@ -285,6 +286,10 @@ For example, we could be interested in the level of modern contraceptive use amo
 #
 # Analysis of Complex Surveys with [`survey`](http://asdfree.com/demographic-and-health-surveys-dhs.html)
 
+A sample survey obtains data from a subset of a population, in order to estimate population attributes. A complex (multistage) sample survey on the other hand refers to a survey that involves complex sampling designs. That is, the selection of final units of observation is accomplished through a series of stages, for example stratification and multistage sampling. See [Introduction to the design and analysis of complex survey data](http://eprints.lse.ac.uk/76991/1/Skinner_Introduction%20to%20the%20design.pdf) for a detailed explanation of complex survey design and analysis
+
+The DHS datasets used in this workshop were collected using a sample designs that involves two-stage probability samples drawn from an existing sample frame, generally the most recent census frame. A probability sample is defined as one in which the units are selected randomly with known and nonzero probabilities. Typically, DHS samples are stratified by geographic region and by urban/rural areas within each region. Detailed information on Analyzing DHS data is available online
+
 A complex sample survey designed to generalize to the residents of various countries.
 
 ## Univariate Analysis
@@ -293,6 +298,10 @@ A complex sample survey designed to generalize to the residents of various count
 install.packages("survey")
 
 library(survey)
+
+agyw.clean$strata <- do.call( paste , agyw.clean[ , c( 'region' , 'residence' ) ] )
+agyw.clean$weight <- v005/(10^6)
+
 
 dhs_design <- svydesign( 
   ~ v021, strata = ~strata, 
