@@ -1,0 +1,32 @@
+
+---
+  output: word_document
+---
+
+
+
+
+Table: Summary descriptives table by groups of `mCuse'
+
+                                           Not Using Modern Contraceptives   N=2652    Using Modern Contraceptives   N=408    p.overall 
+----------------------------------------  ------------------------------------------  -------------------------------------  -----------
+religion:                                                                                                                      <0.001   
+&nbsp;&nbsp;&nbsp;&nbsp;Catholic                         160 (78.0%)                               45 (22.0%)                           
+&nbsp;&nbsp;&nbsp;&nbsp;Other Christian                  775 (76.1%)                               244 (23.9%)                          
+&nbsp;&nbsp;&nbsp;&nbsp;Muslim                           1702 (93.5%)                              118 (6.48%)                          
+&nbsp;&nbsp;&nbsp;&nbsp;Others                            15 (93.8%)                                1 (6.25%)                           
+region:                                                                                                                        <0.001   
+&nbsp;&nbsp;&nbsp;&nbsp;north central                    451 (84.3%)                               84 (15.7%)                           
+&nbsp;&nbsp;&nbsp;&nbsp;north east                       695 (91.1%)                               68 (8.91%)                           
+&nbsp;&nbsp;&nbsp;&nbsp;north west                       835 (93.9%)                               54 (6.07%)                           
+&nbsp;&nbsp;&nbsp;&nbsp;south east                       159 (79.1%)                               42 (20.9%)                           
+&nbsp;&nbsp;&nbsp;&nbsp;south south                      299 (77.3%)                               88 (22.7%)                           
+&nbsp;&nbsp;&nbsp;&nbsp;south west                       213 (74.7%)                               72 (25.3%)                           
+teen_educ:                                                                                                                     <0.001   
+&nbsp;&nbsp;&nbsp;&nbsp;< Secondary                      1533 (96.0%)                              64 (4.01%)                           
+&nbsp;&nbsp;&nbsp;&nbsp;Secondary +                      1119 (76.5%)                              344 (23.5%)                          
+residence:                                                                                                                     <0.001   
+&nbsp;&nbsp;&nbsp;&nbsp;urban                            716 (79.1%)                               189 (20.9%)                          
+&nbsp;&nbsp;&nbsp;&nbsp;rural                            1936 (89.8%)                              219 (10.2%)                          
+
+

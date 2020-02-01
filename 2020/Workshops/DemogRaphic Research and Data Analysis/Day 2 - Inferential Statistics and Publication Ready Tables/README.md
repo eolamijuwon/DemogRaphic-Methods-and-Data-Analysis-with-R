@@ -104,11 +104,12 @@ chi2q_education <- format(if_else(  (chi2q_education<0.0001),
 rowBiv_education <- svyby( ~ mCuse, ~ teen_educ,  dhs_design, svymean) %>% 
     dplyr::rename( "perc_Using" = "mCuseUsing Modern Contraceptives",
             "perc_notUsing" = "mCuseNot Using Modern Contraceptives") %>% 
-    mutate (freq = count(agyw_clean$teen_educ)$freq) %>% 
+    mutate (freq = (agyw_clean %>% count(teen_educ))$n) %>% 
     dplyr::select("teen_educ", "freq", "perc_Using") %>% 
     mutate (perc_Using = round((perc_Using * 100), digits = 2)) %>% 
     mutate (perc_Using = paste0(perc_Using, "%")) %>% 
-    mutate (chi_sq = chi2q_education)
+    rename (characteristics = teen_educ)
+    
 rownames(rowBiv_education) <- NULL
 
 ##        
@@ -155,13 +156,19 @@ Some common regression models in social sciences are:
 
 ## Logistic Regression Model - adjusting for complex survey design
 
-mCuse_logReg_I <- svyglm (mCuse ~ relevel(teen_educ, ref = "Secondary +"),
+WmCuse_logReg_I <- svyglm (mCuse ~ relevel(teen_educ, ref = "Secondary +"),
                     dhs_design, family = binomial(link="logit"))
 
-mCuse_logReg_II <- svyglm (mCuse ~ relevel(teen_educ, ref = "Secondary +") + 
+WmCuse_logReg_II <- svyglm (mCuse ~ relevel(teen_educ, ref = "Secondary +") + 
                     relevel(region, ref = "south west") +
                     factor(residence) + factor(religion),
                     dhs_design, family = binomial(link="logit"))
+
+
+mCuse_logReg_II <- glm (mCuse ~ relevel(teen_educ, ref = "Secondary +") + 
+                    relevel(region, ref = "south west") +
+                    factor(residence) + factor(religion),
+                    data = agyw_clean, family = binomial(link="logit"))
 
 summary(mCuse_logReg_II)    
     
@@ -172,6 +179,74 @@ summary(mCuse_logReg_II)
 
 # Publication Ready Tables
 
+## Univariate - Frequency Distributions
+
+`summaryTools` provide a coherent set of easy to use descriptive functions that are comparable to those included in commercial statistical packages such as SAS, SPSS and Stata. Offer flexibility in terms of output formats and contents
+
+
+```{r}
+
+install.packages("compareGroups")
+
+library (compareGroups)
+
+descriptive <- descrTable((agyw_clean[, 1:5]))
+
+export2word(descriptive, file = "./2020/Workshops/DemogRaphic Research and Data Analysis/Data - Misc/descriptiveTable.docx")
+
+export2html(descriptive, file = "./2020/Workshops/DemogRaphic Research and Data Analysis/Data - Misc/descriptiveTable.html")
+
+```
+
+## Univariate (Complex Surveys) - Frequency Distributions
+
+
+```{r}
+
+tab <- descrTable(mCuse ~ . , (agyw_clean[, 1:5]))
+
+
+```
+
+
+## Bivariate/CrossTabulations
+
+```{r}
+
+bivariate <- descrTable(mCuse ~ . , (agyw_clean[, 1:5]), byrow = TRUE)
+
+export2html(bivariate, file = "./2020/Workshops/DemogRaphic Research and Data Analysis/Data - Misc/bivariateTable.html")
+
+```
+
+## Bivariate/CrossTabulations (Complex Survey)
+
+```{r}
+
+install.packages("kableExtra")
+library (kableExtra)
+
+wBivariate <- rbind ( rowBiv_religion,
+                      rowBiv_region,
+                      rowBiv_education,
+                      rowBiv_residence) %>% 
+              rename (`sample (n)` = freq)
+
+
+wBivariate  %>%
+  kable(caption = "Prevalence of Modern Contraceptive Use",
+        align = "l", booktabs = T, position = "centre") %>%
+  kable_styling("striped", full_width = F, row_label_position="l") %>%
+  group_rows(paste0("Religion (p < ", chi2q_religion, ")"), 1, 4) %>% 
+  group_rows(paste0("Region (p < ", chi2q_region, ")"), 5, 10) %>% 
+  group_rows(paste0("Education (p < ", chi2q_education, ")"), 11, 12) %>% 
+  group_rows(paste0("Place of Residence (p < ", chi2q_residence, ")"), 13, 14) %>% 
+  save_kable(file = "./2020/Workshops/DemogRaphic Research and Data Analysis/Data - Misc/wBivariate.html", self_contained = T, bs_theme = "simplex")
+
+```
+
+
+## Regression Tables
 
 A list of supported styles in `stargazer` is available [online](https://rdrr.io/cran/stargazer/man/stargazer_style_list.html)
 
@@ -196,10 +271,10 @@ stargazer(mCuse_logReg_I, mCuse_logReg_II,
                              "Other Christian",
                              "Muslim", "Others"),
           star.cutoffs = c(0.05, 0.01, 0.001),
+          dep.var.labels   = "Modern Contraceptive Use",
           out = "./2020/Workshops/DemogRaphic Research and Data Analysis/Data - Misc/TeenPreg_logitModel.html")
 
 ```    
-  
-!![demographics map]("https://github.com/eolamijuwon/Workshops_Seminars/blob/master/2020/Workshops/DemogRaphic%20Research%20and%20Data%20Analysis/Data%20-%20Misc/TeenPreg_logitModel.html")
+
   
 
