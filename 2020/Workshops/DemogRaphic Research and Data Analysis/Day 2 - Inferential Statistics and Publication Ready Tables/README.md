@@ -200,11 +200,6 @@ stargazer(mCuse_logReg_I, mCuse_logReg_II,
 
 ```    
   
-  ss
+!![demographics map]("./2020/Workshops/DemogRaphic Research and Data Analysis/Data - Misc/Poisson_Models.html")
   
-```{r, echo=FALSE}
-
-htmltools::includeHTML("./2020/Workshops/DemogRaphic Research and Data Analysis/Data - Misc/Poisson_Models.html")
-
-```    
 
