@@ -200,6 +200,6 @@ stargazer(mCuse_logReg_I, mCuse_logReg_II,
 
 ```    
   
-!![demographics map]("./2020/Workshops/DemogRaphic Research and Data Analysis/Data - Misc/Poisson_Models.html")
+!![demographics map]("https://github.com/eolamijuwon/Workshops_Seminars/blob/master/2020/Workshops/DemogRaphic%20Research%20and%20Data%20Analysis/Data%20-%20Misc/TeenPreg_logitModel.html")
   
 
