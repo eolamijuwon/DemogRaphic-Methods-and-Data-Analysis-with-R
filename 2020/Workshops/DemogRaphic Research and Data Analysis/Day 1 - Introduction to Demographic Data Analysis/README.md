@@ -82,7 +82,7 @@ There's also the [`DHS.rates`](https://doi.org/10.1371/journal.pone.0216403) pac
 A complete list of R packages can be found on the RStudio [[website](https://rstudio.com/products/rpackages/)].
 
 
-At every start of the R studio, only the default packages will be loaded by default. Other packages which are already installed have to be loaded explicitly using the `library(package.name)` function. *Think about digging a well. You only have to dig once `installed.packages()` and fetch water everytime you need one `library(package.name)`*
+At every start of the R studio, only the default packages will be loaded by default. Other packages which are already installed have to be loaded explicitly using the `library(package.name)` function. *Think about digging a well. You only have to dig once `installed.packages()`, fetch water from the well everytime you need a fresh water `library(package.name)` and drink a glass/call a function whenever you are thirsty.*
 
 
 Some common R packages are
@@ -116,15 +116,18 @@ We could get one from the `readstata13` package.
 *Remember that the package needs to be installed and loaded*
 
 ```{r}
+
 install.packages("readstata13")
+
 library(readstata13)
+
 ```
 
 #### Exercise 1B.1
 
 - Using your background knowledge of how functions work, use the `read.dta13()` function from `readstata13` package to load the AGYW dataset (downloaded on your computer) and assign it to *agyw.dataset*
 
-- *Example:* agmy.data <- `"C:/Users/Nigeria/Ekiti State/Federal University Oye/Demo-SocStat/Nigeria [DHS].dta"`
+- *Example:* agmy_data <- `"C:/Users/Nigeria/Ekiti State/Federal University Oye/Demo-SocStat/Nigeria [DHS].dta"`
 
 You can browse the dataset with "View"
 
@@ -133,40 +136,40 @@ You can browse the dataset with "View"
 
 ## Data Structures
 
-We know that variables are like buckets, and so far we have seen that bucket filled with a single value. Even when number was created, the result of the mathematical operation was a single value. Variables can store more than just a single value, they can store a multitude of different data structures. These include, but are not limited to, vectors, factors (`factor`), matrices (`matrix`), data frames (`data.frame`) and lists (`list`).
+The basic data structures in R programming includes vectors, matrices, data frames and lists. It refers to the way in which multiple values are stored. A vector is the most common and basic data structure in R, and is pretty much the workhorse of R. It’s basically a collection of values, mainly 
 
-A vector is the most common and basic data structure in R, and is pretty much the workhorse of R. It’s basically a collection of values, mainly 
+- `numeric`: 1, 3, 5.2, 7
 
-- numbers (1, 3, 5, 7)
+- `integer`: 2L, 5L
 
-- characters ("Matthew is a student", "Rebecca is a doctor", "John is a professor")
+- `character`: "Matthew is a student", "Rebecca is a doctor", "John is a professor"
 
-- logical values (TRUE, FALSE)
+- `logical`: TRUE, FALSE
 
 Note that all values in a vector must be of the same data type. If you try to create a vector with more than a single data type, R will try to coerce it into a single data type.
 
 You can check the structure of your dataset
 
-`str(agyw.dataset)`
+`str(agyw_dataset)`
   
 
 Alternatively you can use the "glimpse" function from the dplyr package to view the data structure
 
-`glimpse(agyw.dataset)`
+`glimpse(agyw_dataset)`
   
 
 You can examine the first few observations in the dataset (could be 5/10/more) using the `head` function
 
-`head(agyw.dataset, n=30)`
+`head(agyw_dataset, n=30)`
   
   
 You can check how many rows(number of observations) are in your dataset using the `nrow` function 
 
-`nrow(agyw.dataset)`
+`nrow(agyw_dataset)`
   
 You can check how many rows(number of variables) are in your dataset using the `ncol` function
 
-`ncol(agyw.dataset)`
+`ncol(agyw_dataset)`
 
 
 
@@ -202,7 +205,7 @@ Clean the *agyw.dataset* and assign it to *agyw.clean*
 
 
 ```{r}
-agyw.clean <- agyw.dataset %>% 
+agyw_clean <- agyw_dataset %>% 
 
               ## Keep only AGYW "at risk"" of pregnancy
               filter (v213 == "no or unsure") %>% ## AGYW who are not currently pregnant
@@ -258,7 +261,7 @@ Univariate analysis involves describing the distribution of a single variable, i
 
 ```{r}
 
-cont_use <- data.frame(table(agyw.clean$mCuse)) %>% 
+cont_use <- data.frame(table(agyw_clean$mCuse)) %>% 
             mutate(perc = round((Freq/sum(Freq))*100, digits = 2))
 ```
 
@@ -266,7 +269,7 @@ OR
 
 ```{r}
 
-cont_use <- data.frame(table(agyw.clean$mCuse)) %>% 
+cont_use <- data.frame(table(agyw_clean$mCuse)) %>% 
             mutate (perc = Freq/sum(Freq)) %>% 
             mutate (perc = perc * 100) %>% 
             mutate (perc = round(perc, digits = 2))
@@ -308,6 +311,14 @@ A sample survey obtains data from a subset of a population, in order to estimate
 The DHS datasets used in this workshop were collected using a sample designs that involves two-stage probability samples drawn from an existing sample frame, generally the most recent census frame. A probability sample is defined as one in which the units are selected randomly with known and nonzero probabilities. Typically, DHS samples are stratified by geographic region and by urban/rural areas within each region. Detailed information on analyzing DHS data is available [online](https://dhsprogram.com/Data/Guide-to-DHS-Statistics/Analyzing_DHS_Data.htm).
 
 
+The analysis factor [website](https://www.theanalysisfactor.com/complex-sample-what-and-why/) also provides some very useful tips about complex sample surveys and some incredible good reasons to use of complex samples:
+
+- Complex samples can be incredibly cost effective, while improving the precision of sample estimates.
+
+- Complex samples allow access to difficult-to-access sampling frames.
+
+- Complex samples can ensure sufficient representation of small sub-population groups in the final sample.
+
 ## Univariate Analysis
 
 ```{r}
@@ -318,14 +329,14 @@ library(survey)
 ## Remember that the DHS samples are stratified by geographic region 
 ## and by urban/rural areas within each region.
 
-agyw.clean$strata <- do.call( paste , agyw.clean[ , c( 'region' , 'residence' ) ] )
+agyw_clean$strata <- do.call( paste , agyw_clean[ , c( 'region' , 'residence' ) ] )
 
 
 ## Sample weights are calculated to six decimals but are 
 ## presented in the standard recode files without the decimal point.
 ## They need to be divided by 1,000,000 before use to approximate the number of cases.
 
-agyw.clean$weight <- agyw.clean$v005/(10^6)
+agyw_clean$weight <- agyw_clean$v005/(10^6)
 
 ```
 
@@ -339,9 +350,9 @@ Sampling weights can be applied in two main ways:
 
 dhs_design <- svydesign( 
   ~ v021, strata = ~strata, 
-        data = agyw.clean, weights = ~weight)
+        data = agyw_clean, weights = ~weight)
 
-table_mCuse <- agyw.clean %>% 
+table_mCuse <- agyw_clean %>% 
   count(mCuse) %>% 
   mutate(perc = round((n/sum(n))*100, digits = 2)) %>% 
   mutate("weighted_perc" = round((svytable ( ~ mCuse, dhs_design, Ntotal=TRUE)) *100, digits = 2)) %>% 
