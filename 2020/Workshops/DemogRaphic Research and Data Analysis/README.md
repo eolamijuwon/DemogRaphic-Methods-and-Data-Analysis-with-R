@@ -40,7 +40,7 @@ For the session, you will be required to have R and Rstudio installed on your co
 -  Lab Exercises
 
                 
-### Day 2: Data Visualization
+### Day 2: Inferential Statistics and Publication Ready Tables
 
 -  Recap
 
