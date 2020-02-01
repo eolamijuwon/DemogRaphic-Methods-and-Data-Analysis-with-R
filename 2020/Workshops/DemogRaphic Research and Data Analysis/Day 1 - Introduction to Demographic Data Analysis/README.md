@@ -14,13 +14,13 @@ Date: "10 February 2020"
 
 The R synthax would usually comprise of:
 
-  - a function
+  - variables and functions
   
-  - '<-' the assignment operator
+  - `<-` the assignment operator
   
   - = for arguments
   
-  - '# for comments/description/documentation
+  - `#` for comments/description/documentation
   
   - $ the operator
 
@@ -93,9 +93,9 @@ These packages are also embedded in the Tidyverse package and a detailed descrip
 
 #### Exercise 1A.2
   
-- Install the `tidyverse` package
+- Install the `tidyverse` and `mosaic` package
 
-- Load the `tidyverse` package
+- Load the `tidyverse` and `mosaic` package
 
 
 #
@@ -261,15 +261,15 @@ cont_use <- data.frame(table(agyw.clean$mCuse)) %>%
 
 #### Exercise 1D.1
   
-- Create a vector **region_freq** with information on the number and percentage of AGYW in each region.
+- Create a dataframe **region_freq** with information on the number and percentage of AGYW in the different region.
 
-- Create a vector **residence_freq** with information on the number and percentage of AGYW in each residence.
+- Create a dataframe **residence_freq** with information on the number and percentage of AGYW in each residence.
 
-- Create a vector **religion_freq** with information on the number and percentage of AGYW in the different religious denomination.
+- Create a dataframe **religion_freq** with information on the number and percentage of AGYW in the different religious denomination.
 
 
 #
-# Contingency tables (cross-tabulations)
+## Bivariate Analysis (Cross-Tabulations)
 
 Descriptive statistics may also be used to describe the relationship between pairs of variables. 
 
@@ -286,11 +286,10 @@ For example, we could be interested in the level of modern contraceptive use amo
 #
 # Analysis of Complex Surveys with [`survey`](http://asdfree.com/demographic-and-health-surveys-dhs.html)
 
-A sample survey obtains data from a subset of a population, in order to estimate population attributes. A complex (multistage) sample survey on the other hand refers to a survey that involves complex sampling designs. That is, the selection of final units of observation is accomplished through a series of stages, for example stratification and multistage sampling. See [Introduction to the design and analysis of complex survey data](http://eprints.lse.ac.uk/76991/1/Skinner_Introduction%20to%20the%20design.pdf) for a detailed explanation of complex survey design and analysis
+A sample survey obtains data from a subset of a population, in order to estimate population attributes. A complex (multistage) sample survey on the other hand refers to a survey that involves complex sampling designs. That is, the selection of final units of observation is accomplished through a series of stages, for example stratification and multistage sampling. See [Introduction to the design and analysis of complex survey data](http://eprints.lse.ac.uk/76991/1/Skinner_Introduction%20to%20the%20design.pdf) for a detailed explanation of complex survey design and analysis.
 
-The DHS datasets used in this workshop were collected using a sample designs that involves two-stage probability samples drawn from an existing sample frame, generally the most recent census frame. A probability sample is defined as one in which the units are selected randomly with known and nonzero probabilities. Typically, DHS samples are stratified by geographic region and by urban/rural areas within each region. Detailed information on Analyzing DHS data is available online
+The DHS datasets used in this workshop were collected using a sample designs that involves two-stage probability samples drawn from an existing sample frame, generally the most recent census frame. A probability sample is defined as one in which the units are selected randomly with known and nonzero probabilities. Typically, DHS samples are stratified by geographic region and by urban/rural areas within each region. Detailed information on analyzing DHS data is available [online](https://dhsprogram.com/Data/Guide-to-DHS-Statistics/Analyzing_DHS_Data.htm).
 
-A complex sample survey designed to generalize to the residents of various countries.
 
 ## Univariate Analysis
 
@@ -300,7 +299,8 @@ install.packages("survey")
 library(survey)
 
 agyw.clean$strata <- do.call( paste , agyw.clean[ , c( 'region' , 'residence' ) ] )
-agyw.clean$weight <- v005/(10^6)
+
+agyw.clean$weight <- agyw.clean$v005/(10^6)
 
 
 dhs_design <- svydesign( 
@@ -363,12 +363,14 @@ View(colBiv_education)
 
 #### Exercise 1F.2
   
-- Create a dataframe **table_region** with information on:
+- Create a dataframe **rowBiv_region** with information on:
 
-  - The number (freq) of AGYW in the different region.
+  - *Unweighted* number (freq) of AGYW in the different region who are using modern contraceptives.
   
-  - Unweighted percentage distribution of AGYW in the regions.
+  - *Unweighted* number (freq) of AGYW in the different region who are not using modern contraceptives.
   
-  - Weighted percentage distribution of AGYW in the regions.
+  - **Weighted** *(row)* percentage distribution of AGYW in the regions who are using modern contraceptives.
 
-- Repeat the above for **table_residence**, and **table_religion**
+  - **Weighted** *(row)* percentage distribution of AGYW in the regions who are not using modern contraceptives.
+
+- Repeat the above for **rowBiv_residence**, and **rowBiv_religion**

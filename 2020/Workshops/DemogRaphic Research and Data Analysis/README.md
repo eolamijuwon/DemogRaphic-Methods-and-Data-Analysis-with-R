@@ -111,12 +111,25 @@ For the session, you will be required to have R and Rstudio installed on your co
 
 Help is always online.
 
-Google, StackOverFlow, Twitter, among others.
+-   [Google](https://google.com) – Most Popular programming Q&A site on the web.
+
+-   [DataMentor](https://www.datamentor.io/r-programming/) – An online website for learning R programming.
+
+-   [R-help](https://stat.ethz.ch/mailman/listinfo/r-help) – An active mailing list for R.
+
+-   [StackOverflow](https://stackoverflow.com/questions/tagged/r) – R news and tutorials by R bloggers.
+
+-   [Twitter](https://twitter.com) – A microblog for the interacting with the R community.
+
+among others.
 
 You can also get help with a specific function by using the *?* function
 
 ```{r}
+
+help(mutate)
 ?mutate
+
 ```
 
 -   Cheat Sheets

@@ -67,7 +67,7 @@
     agyw.dataset <- read.dta13("./2020/Workshops/DemogRaphic Research and Data Analysis/Data - Misc/Nigeria [DHS].dta")
     
     ## Alternatively, you could import directly from GitHub
-    codebook <- read.csv(text=RCurl::getURL("https://raw.githubusercontent.com/eolamijuwon/Workshops_Seminars/master/master/2020/Workshops/DemogRaphic%20Research%20and%20Data%20Analysis/Data%20-%20Misc/Nigeria%20%5BDHS%5D.dta"), header=T)
+    agyw.dataset <- read.csv(text=RCurl::getURL("https://raw.githubusercontent.com/eolamijuwon/Workshops_Seminars/master/master/2020/Workshops/DemogRaphic%20Research%20and%20Data%20Analysis/Data%20-%20Misc/Nigeria%20%5BDHS%5D.dta"), header=T)
     
 
 #### Exercise 1D.1
