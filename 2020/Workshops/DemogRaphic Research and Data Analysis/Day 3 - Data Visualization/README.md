@@ -7,7 +7,9 @@ Date: "11 February 2020"
 
 #
 
-!![Image](https://github.com/eolamijuwon/Workshops_Seminars/blob/master/2020/Workshops/DemogRaphic%20Research%20and%20Data%20Analysis/Day%203%20-%20Data%20Visualization/MigrationFlows.PNG)
+![Image]("./MigrationFlows.PNG")
+
+![Image]("./_ImmigrationFlows_ZA.PNG")
 
 # Recap
 
