@@ -25,6 +25,8 @@ For the session, you will be required to have R and Rstudio installed on your co
     
 -   Data handling: import/export data to/from R
 
+    -  Data Structures
+
 -   Data Wrangling/Management
 		
 -   Descriptive statistics in R

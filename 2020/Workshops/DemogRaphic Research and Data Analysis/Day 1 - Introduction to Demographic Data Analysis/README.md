@@ -76,7 +76,10 @@ Write a function to:
 R packages are a collection of R *functions*, *complied code* and *sample data*. They are stored under a directory called "library" in the R environment. By default, R installs a set of packages during installation. You can view already installed packages using the `installed.packages()` function. More packages can be installed/added after using `install.packages("package.name")` or `devtools::install_github("repository/package.name")`. 
 
 
-Some very useful R packages in applied demography includes [`DemoDecomp`](https://github.com/timriffe/DemoDecomp/), [`demography`](https://github.com/robjhyndman/demography), [`demogR`](https://www.jstatsoft.org/article/view/v022i10), among many others. Examples of R packages can be found on the RStudio [[website](https://rstudio.com/products/rpackages/)].
+Some very useful R packages in applied demography includes [`DemoDecomp`](https://github.com/timriffe/DemoDecomp/), [`demography`](https://github.com/robjhyndman/demography), [`demogR`](https://www.jstatsoft.org/article/view/v022i10), among many others.
+There's also the [`DHS.rates`](https://doi.org/10.1371/journal.pone.0216403) package for calculating fertility indicators, such as the total fertility rate, general fertility rate, and age-specific fertility rates, and childhood mortality indicators, from the DHS data.
+
+A complete list of R packages can be found on the RStudio [[website](https://rstudio.com/products/rpackages/)].
 
 
 At every start of the R studio, only the default packages will be loaded by default. Other packages which are already installed have to be loaded explicitly using the `library(package.name)` function. *Think about digging a well. You only have to dig once `installed.packages()` and fetch water everytime you need one `library(package.name)`*
@@ -123,11 +126,25 @@ library(readstata13)
 
 - *Example:* agmy.data <- `"C:/Users/Nigeria/Ekiti State/Federal University Oye/Demo-SocStat/Nigeria [DHS].dta"`
 
-
 You can browse the dataset with "View"
 
 `View(agyw.dataset)`
-  
+
+
+## Data Structures
+
+We know that variables are like buckets, and so far we have seen that bucket filled with a single value. Even when number was created, the result of the mathematical operation was a single value. Variables can store more than just a single value, they can store a multitude of different data structures. These include, but are not limited to, vectors, factors (`factor`), matrices (`matrix`), data frames (`data.frame`) and lists (`list`).
+
+A vector is the most common and basic data structure in R, and is pretty much the workhorse of R. It’s basically a collection of values, mainly 
+
+- numbers (1, 3, 5, 7)
+
+- characters ("Matthew is a student", "Rebecca is a doctor", "John is a professor")
+
+- logical values (TRUE, FALSE)
+
+Note that all values in a vector must be of the same data type. If you try to create a vector with more than a single data type, R will try to coerce it into a single data type.
+
 You can check the structure of your dataset
 
 `str(agyw.dataset)`
@@ -298,10 +315,27 @@ install.packages("survey")
 
 library(survey)
 
+## Remember that the DHS samples are stratified by geographic region 
+## and by urban/rural areas within each region.
+
 agyw.clean$strata <- do.call( paste , agyw.clean[ , c( 'region' , 'residence' ) ] )
+
+
+## Sample weights are calculated to six decimals but are 
+## presented in the standard recode files without the decimal point.
+## They need to be divided by 1,000,000 before use to approximate the number of cases.
 
 agyw.clean$weight <- agyw.clean$v005/(10^6)
 
+```
+
+Sampling weights can be applied in two main ways:
+
+- A simple application of weights when all that is needed are indicator estimates.
+
+- As part of complex sample parameters when standard errors, confidence intervals or significance testing is required for the indicator.
+
+```{r}
 
 dhs_design <- svydesign( 
   ~ v021, strata = ~strata, 
@@ -352,11 +386,11 @@ View(colBiv_education)
   
 - Create a dataframe `table_region` with information on:
 
-  - The number (freq) of AGYW in the different region.
+  - The **unweighted** number (freq) of AGYW in the different region.
   
-  - Unweighted percentage distribution of AGYW in the regions.
+  - **Unweighted** percentage distribution of AGYW in the regions.
   
-  - Weighted percentage distribution of AGYW in the regions.
+  - **Weighted** percentage distribution of AGYW in the regions.
 
 - Repeat the above for `table_residence`, and `table_religion`
 
