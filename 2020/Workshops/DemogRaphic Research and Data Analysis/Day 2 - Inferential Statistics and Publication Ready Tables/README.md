@@ -181,7 +181,6 @@ summary(mCuse_logReg_II)
 
 ## Univariate - Frequency Distributions
 
-`summaryTools` provide a coherent set of easy to use descriptive functions that are comparable to those included in commercial statistical packages such as SAS, SPSS and Stata. Offer flexibility in terms of output formats and contents
 
 
 ```{r}
@@ -221,6 +220,8 @@ export2html(bivariate, file = "./2020/Workshops/DemogRaphic Research and Data An
 
 ## Bivariate/CrossTabulations (Complex Survey)
 
+You will need to have completed exercise 2A.1 to proceed
+
 ```{r}
 
 install.packages("kableExtra")
@@ -255,7 +256,7 @@ A list of supported styles in `stargazer` is available [online](https://rdrr.io/
 install.packages("stargazer")
 library(stargazer)
 
-stargazer(mCuse_logReg_I, mCuse_logReg_II, 
+stargazer(WmCuse_logReg_I, WmCuse_logReg_II, mCuse_logReg_II, 
           type = "text", digits = 2, 
           single.row = FALSE, ci = TRUE, 
           ci.level = 0.95, 
@@ -276,5 +277,126 @@ stargazer(mCuse_logReg_I, mCuse_logReg_II,
 
 ```    
 
-  
+Alternatively, we could use the KableExtra package to style our own regression table.
 
+
+```{r}
+
+signif.num <- function(x) {
+    symnum(x, corr = FALSE, na = FALSE, legend = FALSE,
+           cutpoints = c(0, 0.001, 0.01, 0.05, 1), 
+           symbols = c("***", "**", "*", " "))
+}
+
+#####################
+## Model I - Weighted
+
+pval <- (summary(WmCuse_logReg_I)$coefficients[,4])
+        logReg_I_pv <- as.data.frame(signif.num(pval))
+        rownames (logReg_I_pv) <- NULL
+
+tab_logReg_I <- cbind(OR = coef(WmCuse_logReg_I), confint(WmCuse_logReg_I)) %>% 
+                    exp() %>% 
+                    data.frame() %>% 
+                    add_rownames("Characteristics") %>%
+                    mutate ("OR" = round(OR, digits = 2)) %>% 
+                    mutate ("LCI" = round(`X2.5..`, digits = 2)) %>% 
+                    mutate ("UCI" = round(`X97.5..`, digits = 2)) %>% 
+                    mutate ("Characteristics" = c("Intercept", "< Secondary")) %>% 
+                    mutate (`95% CI` = paste0(LCI, "; ", UCI)) %>% 
+                    select(c("Characteristics", "OR", "95% CI"))
+
+tab_logReg_I <- cbind(tab_logReg_I, logReg_I_pv) %>% 
+                mutate (OR = paste0(OR, " ", `signif.num(pval)`)) %>% 
+                select(-c("signif.num(pval)"))
+                
+                
+######################
+## Model II - Weighted
+
+pval <- (summary(WmCuse_logReg_II)$coefficients[,4])
+        logReg_II_wpv <- as.data.frame(signif.num(pval))
+        rownames (logReg_II_wpv) <- NULL
+
+tab_wlogReg_II <- cbind(OR = coef(WmCuse_logReg_II), confint(WmCuse_logReg_II)) %>% 
+                    exp() %>% 
+                    data.frame() %>% 
+                    add_rownames("Characteristics") %>%
+                    mutate ("OR" = round(OR, digits = 2)) %>% 
+                    mutate ("LCI" = round(`X2.5..`, digits = 2)) %>% 
+                    mutate ("UCI" = round(`X97.5..`, digits = 2)) %>% 
+                    mutate ("Characteristics" = c("Intercept",
+                                                  "< Secondary",
+                                                  "North Central",
+                                                  "North East",
+                                                  "North West",
+                                                  "South East",
+                                                  "South South",
+                                                  "Rural",
+                                                  "Other Christian",
+                                                  "Muslim",
+                                                  "Others")) %>% 
+                    mutate (`95% CI` = paste0(LCI, "; ", UCI)) %>% 
+                    select(c("Characteristics", "OR", "95% CI"))
+
+tab_wlogReg_II <- cbind(tab_wlogReg_II, logReg_II_wpv) %>% 
+                  mutate (OR = paste0(OR, " ", `signif.num(pval)`)) %>% 
+                  select(-c("signif.num(pval)"))
+
+
+########################
+## Model II - Unweighted
+
+pval <- (summary(mCuse_logReg_II)$coefficients[,4])
+        logReg_II_pv <- as.data.frame(signif.num(pval))
+        rownames (logReg_II_pv) <- NULL
+
+tab_logReg_II <- cbind(OR = coef(mCuse_logReg_II), confint(mCuse_logReg_II)) %>% 
+                    exp() %>% 
+                    data.frame() %>% 
+                    add_rownames("Characteristics") %>%
+                    mutate ("OR" = round(OR, digits = 2)) %>% 
+                    mutate ("LCI" = round(`X2.5..`, digits = 2)) %>% 
+                    mutate ("UCI" = round(`X97.5..`, digits = 2)) %>% 
+                    mutate ("Characteristics" = c("Intercept",
+                                                  "< Secondary",
+                                                  "North Central",
+                                                  "North East",
+                                                  "North West",
+                                                  "South East",
+                                                  "South South",
+                                                  "Rural",
+                                                  "Other Christian",
+                                                  "Muslim",
+                                                  "Others")) %>% 
+                    mutate (`95% CI` = paste0(LCI, "; ", UCI)) %>% 
+                    select(c("Characteristics", "OR", "95% CI"))
+
+tab_logReg_II <- cbind(tab_logReg_II, logReg_II_pv) %>% 
+                  mutate (OR = paste0(OR, " ", `signif.num(pval)`)) %>% 
+                  select(-c("signif.num(pval)"))
+
+############
+
+tab_logReg_I %>% 
+        right_join(tab_wlogReg_II, by = "Characteristics") %>% 
+        right_join(tab_logReg_II, by = "Characteristics") %>%
+        filter (Characteristics != "Intercept") %>% 
+        rename (OR = "OR.x", OR = "OR.y",
+                `95% CI` = `95% CI.x`,
+                `95% CI` = `95% CI.y`) %>% 
+        kable(caption = "Determinants of Modern Contraceptive Use Among AGYW",
+              align = "l", booktabs = T, position = "centre") %>%
+        kable_styling("striped", full_width = F, row_label_position="l") %>%
+        group_rows("Education (Ref = Sec +)", 1, 1) %>% 
+        group_rows("Region (Ref = south west)", 2, 6) %>% 
+        group_rows("Residence (Ref = Urban)", 7, 7) %>% 
+        group_rows("Religious Affiliation (Ref = Catholic)", 8, 10) %>% 
+        add_header_above(c(" ",
+                          "Weighted Simple Model" = 2,
+                          "Weighted Multiple Model" = 2,
+                          "Unweighted Multiple Model" = 2)) %>%
+save_kable(file = "./2020/Workshops/DemogRaphic Research and Data Analysis/Data - Misc/regressKable.html",
+          self_contained = T, bs_theme = "simplex")
+
+```

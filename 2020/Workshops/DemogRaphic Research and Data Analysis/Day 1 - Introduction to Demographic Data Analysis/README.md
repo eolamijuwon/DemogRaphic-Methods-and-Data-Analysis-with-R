@@ -239,6 +239,12 @@ agyw_clean <- agyw_dataset %>%
                                                 
               select (c("mCuse", "religion", "region",
                         "residence", "v005", "v021"))
+
+
+library(summarytools)
+
+view(dfSummary(agyw_clean[, 1:4] ))
+
                         
 ```
 

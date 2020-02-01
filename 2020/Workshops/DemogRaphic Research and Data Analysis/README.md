@@ -28,6 +28,8 @@ For the session, you will be required to have R and Rstudio installed on your co
     -  Data Structures
 
 -   Data Wrangling/Management
+
+    - Easy to use data summary with [`summarytools`](https://github.com/dcomtois/summarytools)
 		
 -   Descriptive statistics in R
 
@@ -46,7 +48,7 @@ For the session, you will be required to have R and Rstudio installed on your co
 
 -  Regression models in R
 
--  Publication ready tables with [`stargazer`](https://www.jakeruss.com/cheatsheets/stargazer/), [`kableExtra`](http://haozhu233.github.io/kableExtra/awesome_table_in_html.html), [`compareGroups`](https://github.com/isubirana/compareGroups), [`summarytools`](https://github.com/dcomtois/summarytools)
+-  Publication ready tables with [`stargazer`](https://www.jakeruss.com/cheatsheets/stargazer/), [`kableExtra`](http://haozhu233.github.io/kableExtra/awesome_table_in_html.html), [`compareGroups`](https://github.com/isubirana/compareGroups)
 
 -  Lab Exercises
 
