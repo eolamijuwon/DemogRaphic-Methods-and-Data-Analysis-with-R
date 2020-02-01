@@ -7,9 +7,20 @@ Date: "11 February 2020"
 
 #
 
-![Image](MigrationFlows.PNG)
+
+![Image](wildlifeStrikes.PNG)
+
+
+
+Visualizing top internation migration flows to South Africa using data from the 2016 community survey. Map and chart can be reproduced using the R code available [here](https://github.com/eolamijuwon/TidyTuesday/blob/master/migration_flows_ZA/Migration_flows_ZA.R)
 
 ![Image](_ImmigrationFlows_ZA.PNG)
+
+
+Visualizing internal migration flows in South Africa using data from the 2016 community survey and `chorddiag` package with code adapted from [Data-to-Viz](https://www.data-to-viz.com/graph/chord.html). A reproducible code for the chart is available [here](https://github.com/eolamijuwon/TidyTuesday/blob/master/migration_flows_ZA/Migration_flows_ZA.R)
+
+![Image](MigrationFlows.PNG)
+
 
 # Recap
 
