@@ -17,13 +17,15 @@ Visualizing top internation migration flows to South Africa using data from the 
 <img align="center" src="_ImmigrationFlows_ZA.PNG">
 
 
-<img align="left" src="MigrationFlows.PNG"> 
-
-<img align="right" src="alluvial.png"> 
-
+<img align="center" src="MigrationFlows.PNG"> 
 
 Visualizing internal migration flows in South Africa using data from the 2016 community survey and `chorddiag` package with code adapted from [Data-to-Viz](https://www.data-to-viz.com/graph/chord.html). A reproducible code for the chart is available [here](https://github.com/eolamijuwon/TidyTuesday/blob/master/migration_flows_ZA/Migration_flows_ZA.R)
 
+
+
+
+
+<img align="center" src="alluvial.png"> 
 
 
 
