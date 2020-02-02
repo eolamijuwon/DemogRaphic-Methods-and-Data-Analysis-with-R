@@ -25,7 +25,6 @@ Visualizing internal migration flows in South Africa using data from the 2016 co
 
 
 
-<img align="center" src="alluvial.png"> 
 
 
 
