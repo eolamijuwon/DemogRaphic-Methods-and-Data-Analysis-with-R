@@ -65,14 +65,14 @@ For the session, you will be required to have R and Rstudio installed on your co
 
 -   `ggplot2` basics
 
--   `ggplot2` Extras - [Extensions](http://www.ggplot2-exts.org/gallery/)
-
-    -  [`ggthemes`](https://ggplot2.tidyverse.org/reference/ggtheme.html)
-    
-    -  [`gganimate`](https://gganimate.com/articles/gganimate.html)
-    
     -  geoms [`waffle`](https://github.com/hrbrmstr/waffle)
 
+    -  [`ggthemes`](https://ggplot2.tidyverse.org/reference/ggtheme.html)
+
+-   `ggplot2` Extras - [Extensions](http://www.ggplot2-exts.org/gallery/)
+
+    -  [`gganimate`](https://gganimate.com/articles/gganimate.html)
+    
 -  Save/Export plots
 
 -  Lab Exercises
@@ -112,6 +112,10 @@ For the session, you will be required to have R and Rstudio installed on your co
 
 
 # Where to Find Help
+
+
+<img align="center" src="Data - Misc/help.gif"> 
+
 
 Help is always online.
 
