@@ -74,6 +74,9 @@ A Graphing Template
 Let’s turn this code into a reusable template for making graphs with ggplot2. To make a graph, replace the bracketed sections in the following code with a dataset, a geom function, or a collection of mappings:
 
 
+
+
+
 ```{r}
 
 library(<tidyverse>ggplot2)
@@ -89,10 +92,58 @@ The rest of this chapter will show you how to complete and extend this template 
 ### <DATA>
 
 
+```{}
+
+library (readxl)
+
+library (tidyverse)
+
+library (stringr)
+
+WB_PopData <- read_xlsx("./2020/Workshops/DemogRaphic Research and Data Analysis/Data - Misc/NGA - Pop Distribution.xlsx")
+
+WB_data_edited <- WB_PopData %>% 
+                  select(-c("Country Name",
+                            "Series Code",
+                            "Country Code")) %>% 
+                  separate(`Series Name`, 
+                           c("Age", "Sex"),
+                           fill = "right", sep = ",",) %>% 
+                  filter (Sex != " female (% of female population)" &
+                          Sex != " male (% of male population)" &
+                          Sex != " total") %>% 
+                  filter (Age != "Population ages 65 and above" &
+                          Age != "Population ages 0-14" &
+                          Age != "Population ages 15-64") %>% 
+                  mutate (Age = str_sub(Age, -5, -1)) %>% 
+                  mutate (Age = replace(Age, which(Age == "above"), "80+"))
+                  
+                  
+WB_data_edited <- WB_data_edited %>% 
+                  pivot_longer( cols = `2018 [YR2018]`:`2006 [YR2006]`,
+                                names_to = "year", 
+                                values_to = "population",
+                                values_drop_na = TRUE) %>% 
+                  mutate (year = str_sub(year, 1, 4))
+
+
+
+WB_data_edited <- WB_data_edited %>%
+                  pivot_wider(names_from = Sex, values_from = population) %>% 
+                  mutate    (year = as.numeric(year)) %>% 
+                  rename    (male = " male",
+                            female = " female") %>% 
+                  group_by  (year) %>% 
+                  mutate    (perc_male = -1*(male/(sum(male) + sum(female)))*100) %>% 
+                  mutate    (perc_female = (female/(sum(male) + sum(female)))*100) %>% 
+                  ungroup   ()
+                  
+                          
+```
+
 ### <GEOM_FUNCTION>
 
 Please see the `ggplot2` reference [website](https://ggplot2.tidyverse.org/reference/) for a full list of geoms_ and functions
-
 
 -   `geom_bar`, `geom_col` for bar charts
 
@@ -106,14 +157,123 @@ Please see the `ggplot2` reference [website](https://ggplot2.tidyverse.org/refer
 
 -   `geom_point()` for plotting points
 
-	
-
 
 ### <MAPPINGS>
 
 
+```{r}	
+
+WB_data_edited %>% filter (year == 2006) %>% 
+                   ggplot () + 
+                   geom_col (aes(x = Age, y = perc_female)) +
+                   coord_flip()
+
+
+WB_data_edited %>% filter (year == 2006) %>% 
+                   ggplot () + 
+                   geom_col (aes(x = Age, y = perc_male)) +
+                   coord_flip()
+                   
+                   
+WB_data_edited %>% filter (year == 2006) %>% 
+                   ggplot () + 
+                   geom_col (aes(x = Age, y = perc_male), fill = "blue") +
+                   geom_col (aes(x = Age, y = perc_female), fill = "orange") +
+                   coord_flip() +
+                   labs (x = "Age Groups (in years)",
+                         y = "Percentage Distribution (%)")
+
+```
+
+
 ### THEME_FUNCTION
 
+
+```{r}
+
+## Pop Distribution, 2006
+
+popDistr_2006 <-   WB_data_edited %>% filter (year == 2006) %>% 
+                   ggplot () + 
+                   geom_col (aes(x = Age, y = perc_male), fill = "#2863a6") +
+                   geom_col (aes(x = Age, y = perc_female), fill = "orange") +
+                   coord_flip() +
+                   labs (x = "Age Groups (in years)",
+                         y = "Percentage Distribution (%)",
+                         title = "NG Population Distribution, 2006") +
+                   theme_bw () +
+                   theme (axis.title.x = element_text(size = 9.5, 
+                                                      margin = unit(c(0.25, 0, 0, 0), "cm")),
+                          axis.title.y = element_text(size = 9.5, 
+                                                      margin = unit(c(0, 0.25, 0, 0), "cm")),
+                          plot.title = element_text(size = 11.5, face = "bold"))
+
+## Pop Distribution, 2010
+
+popDistr_2010 <-   WB_data_edited %>% filter (year == 2010) %>% 
+                   ggplot () + 
+                   geom_col (aes(x = Age, y = perc_male), fill = "#2863a6") +
+                   geom_col (aes(x = Age, y = perc_female), fill = "orange") +
+                   coord_flip() +
+                   labs (x = "Age Groups (in years)",
+                         y = "Percentage Distribution (%)",
+                         title = "NG Population Distribution, 2010") +
+                   theme_bw () +
+                   theme (axis.title.x = element_text(size = 9.5, 
+                                                      margin = unit(c(0.25, 0, 0, 0), "cm")),
+                          axis.title.y = element_text(size = 9.5, 
+                                                      margin = unit(c(0, 0.25, 0, 0), "cm")),
+                          plot.title = element_text(size = 11.5, face = "bold"))
+
+## Pop Distribution, 2014
+
+popDistr_2014 <-   WB_data_edited %>% filter (year == 2014) %>% 
+                   ggplot () + 
+                   geom_col (aes(x = Age, y = perc_male), fill = "#2863a6") +
+                   geom_col (aes(x = Age, y = perc_female), fill = "orange") +
+                   coord_flip() +
+                   labs (x = "Age Groups (in years)",
+                         y = "Percentage Distribution (%)",
+                         title = "NG Population Distribution, 2014") +
+                   theme_bw () +
+                   theme (axis.title.x = element_text(size = 9.5, 
+                                                      margin = unit(c(0.25, 0, 0, 0), "cm")),
+                          axis.title.y = element_text(size = 9.5, 
+                                                      margin = unit(c(0, 0.25, 0, 0), "cm")),
+                          plot.title = element_text(size = 11.5, face = "bold"))
+
+## Pop Distribution, 2018
+
+popDistr_2018 <-   WB_data_edited %>% filter (year == 2018) %>% 
+                   ggplot () + 
+                   geom_col (aes(x = Age, y = perc_male), fill = "#2863a6") +
+                   geom_col (aes(x = Age, y = perc_female), fill = "orange") +
+                   coord_flip() +
+                   labs (x = "Age Groups (in years)",
+                         y = "Percentage Distribution (%)",
+                         title = "NG Population Distribution, 2018") +
+                   theme_bw () +
+                   theme (axis.title.x = element_text(size = 9.5, 
+                                                      margin = unit(c(0.25, 0, 0, 0), "cm")),
+                          axis.title.y = element_text(size = 9.5, 
+                                                      margin = unit(c(0, 0.25, 0, 0), "cm")),
+                          plot.title = element_text(size = 11.5, face = "bold"))
+
+
+library (ggpubr)
+
+ggarrange(popDistr_2006,
+          popDistr_2010,
+          popDistr_2014,
+          popDistr_2018,
+          ncol = 2, nrow = 2, 
+          align = "v")
+          
+ggsave ("./2020/Workshops/DemogRaphic Research and Data Analysis/Day 3 - Data Visualization/Pop Pyramid.jpg", dpi = 300, height = 9, width = 9)
+
+```
+
+<img align="right" src="Pop Pyramid.jpg">
 
 
 # `ggplot2` Extras - [Extensions](http://www.ggplot2-exts.org/gallery/)
