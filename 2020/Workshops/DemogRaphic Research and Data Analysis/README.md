@@ -163,7 +163,11 @@ Some of the materials used in this workshop are adapted from the Barcelona Summe
 
 
 
+# About Me
 
+Hi, I am Emmanuel Olamijuwon, teaching undergraduate courses in Demography at the University of Eswatini in Eswatini, and doing my PhD in Demography and Population Studies at the University of the Witwatersrand, South African. I have been hooked on R since 2017 when I attended the IUSSP training workshop on social media, big data and digital demography. I have since participated in several workshops including the Summer Institute for Computational Social Science [[SICSS 2018](https://compsocialscience.github.io/summer-institute/2018/capetown/)], the BaRcelona Summer School of Demography [[BSSD](https://ced.uab.cat/en/courses/barcelona-summer-school-of-demography/)] in 2019, Rostock Open Science Workshop. I was also a teaching assistant for [SICSS 2019](https://compsocialscience.github.io/summer-institute/2019/capetown/) and now a co-organizer of the [Eswatini UseR Group](https://www.meetup.com/EswatiniUseR/) for building local capacity for data analysis using R in Eswatini.
+
+I recently develop a ShinyApplication [[African DT ProfileR](https://eolamijuwon.shinyapps.io/AfricanDTprofileR/)] for visualizing demographic transitions in African countries. I mostly use data from the Demographic and Health Surveys (DHS), but recently, I have been using data from online sources such as surveys and social media platforms. For example, my doctoral research is examining opportunities for advancing sexual and reproductive health information for young African adults using social media data.
 
 
 
