@@ -458,6 +458,6 @@ anim_save("./2020/Workshops/DemogRaphic Research and Data Analysis/Day 3 - Data 
 
 ```
 
-# Lab Exercises
+# Lab Exercises - Group Project
 
-sdf
+Using the Adolescent girls and young women dataset. Create a very appealing visualization that also tells a story. Be prepared to share with the larger group what your team has done. 
