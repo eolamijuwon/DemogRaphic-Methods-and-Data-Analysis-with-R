@@ -23,7 +23,6 @@ Visualizing internal migration flows in South Africa using data from the 2016 co
 
 
 
-<img align="center" src="gif.gif"> 
 
 
 
@@ -58,6 +57,7 @@ This chapter focuses on ggplot2, one of the core members of the tidyverse. To ac
 
 # Impressive data visualization showcases [{tidytuesday}](https://nsgrantham.shinyapps.io/tidytuesdayrocks/), [{R-Graph Gallery}](https://www.r-graph-gallery.com/index.html)
 
+<img align="center" src="tidytuesday.gif"> 
 
 
 # `ggplot2` Basics
