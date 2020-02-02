@@ -23,7 +23,7 @@ Visualizing internal migration flows in South Africa using data from the 2016 co
 
 
 
-
+<img align="center" src="gif.gif"> 
 
 
 
@@ -41,6 +41,26 @@ Visualizing internal migration flows in South Africa using data from the 2016 co
 - Clean/manage dataset
 
 - Descriptive statistics (comples surveys)
+
+
+# Introduction to Data visualization in R
+
+This chapter will teach you how to visualize your data using ggplot2. R has several systems for making graphs, but ggplot2 is one of the most elegant and most versatile. ggplot2 implements the grammar of graphics, a coherent system for describing and building graphs. With ggplot2, you can do more faster by learning one system and applying it in many places.
+
+If you’d like to learn more about the theoretical underpinnings of ggplot2 before you start, I’d recommend reading “A Layered Grammar of Graphics”.
+
+Prerequisites
+This chapter focuses on ggplot2, one of the core members of the tidyverse. To access the datasets, help pages, and functions that we will use in this chapter, load the tidyverse by running this code:
+
+
+
+
+
+# Impressive data visualization showcases [{tidytuesday}](https://nsgrantham.shinyapps.io/tidytuesdayrocks/), [{R-Graph Gallery}](https://www.r-graph-gallery.com/index.html)
+
+
+
+# `ggplot2` Basics
 
 
 ```{r}

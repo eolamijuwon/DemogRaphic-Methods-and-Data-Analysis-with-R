@@ -57,9 +57,9 @@ For the session, you will be required to have R and Rstudio installed on your co
 
 -   Recap
 
--   Impressive data visualization showcases [{tidytuesday}](https://nsgrantham.shinyapps.io/tidytuesdayrocks/), [{R-Graph Gallery}](https://www.r-graph-gallery.com/index.html)
-
 -   Introduction to Data visualization in R
+
+-   Impressive data visualization showcases [{tidytuesday}](https://nsgrantham.shinyapps.io/tidytuesdayrocks/), [{R-Graph Gallery}](https://www.r-graph-gallery.com/index.html)
 
 -   Basic data visualization principles
 
