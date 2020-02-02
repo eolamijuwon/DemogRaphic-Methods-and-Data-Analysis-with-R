@@ -437,7 +437,6 @@ animate(animat, fps = 6, duration = 30, end_pause = 10,
   
     anim_save("./2020/Workshops/DemogRaphic Research and Data Analysis/Day 3 - Data Visualization/FertilityLE.gif")
 
-
 ```
 
 <img align="right" src="FertilityLE.gif">
