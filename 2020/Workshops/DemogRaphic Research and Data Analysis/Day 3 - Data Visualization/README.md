@@ -134,14 +134,14 @@ WB_data_edited <- WB_data_edited %>%
                   rename    (male = " male",
                             female = " female") %>% 
                   group_by  (year) %>% 
-                  mutate    (perc_male = -1*(male/(sum(male) + sum(female)))*100) %>% 
+                  mutate    (perc_male = (male/(sum(male) + sum(female)))*100) %>% 
                   mutate    (perc_female = (female/(sum(male) + sum(female)))*100) %>% 
                   ungroup   ()
                   
                           
 ```
 
-### <GEOM_FUNCTION>
+### `geom_ ()`
 
 Please see the `ggplot2` reference [website](https://ggplot2.tidyverse.org/reference/) for a full list of geoms_ and functions
 
@@ -158,35 +158,80 @@ Please see the `ggplot2` reference [website](https://ggplot2.tidyverse.org/refer
 -   `geom_point()` for plotting points
 
 
-### <MAPPINGS>
+### Mappings `aes ()`
 
 
 ```{r}	
 
 WB_data_edited %>% filter (year == 2006) %>% 
-                   ggplot () + 
-                   geom_col (aes(x = Age, y = perc_female)) +
+                   ggplot (aes(x = Age, y = female)) + 
+                   geom_col () +
                    coord_flip()
 
 
 WB_data_edited %>% filter (year == 2006) %>% 
-                   ggplot () + 
-                   geom_col (aes(x = Age, y = perc_male)) +
-                   coord_flip()
+                   ggplot (aes(x = Age)) + 
+                   geom_col (aes(y = -male)) +
+                   coord_flip() 
+
                    
                    
 WB_data_edited %>% filter (year == 2006) %>% 
                    ggplot () + 
-                   geom_col (aes(x = Age, y = perc_male), fill = "blue") +
+                   geom_col (aes(x = Age, y = -perc_male), fill = "blue") +
                    geom_col (aes(x = Age, y = perc_female), fill = "orange") +
                    coord_flip() +
                    labs (x = "Age Groups (in years)",
-                         y = "Percentage Distribution (%)")
+                         y = "Percentage Distribution (%)") +
+                   scale_y_continuous(breaks = seq(-10, 10, 2),
+                                      labels = seq(-10, 10, 2) %>% abs %>% paste0 ("%"))
+
 
 ```
 
 
-### THEME_FUNCTION
+### `theme()`
+
+
+```{r}
+
+gg_plot <-  WB_data_edited %>% filter (year == 2006) %>% 
+            ggplot () + 
+            geom_col (aes(x = Age, y = -perc_male), fill = "#2863a6") +
+            geom_col (aes(x = Age, y = perc_female), fill = "orange") +
+            coord_flip() +
+            labs (x = "Age Groups (in years)",
+                         y = "Percentage Distribution",
+                         title = "NG Population Distribution, 2006") +
+            scale_y_continuous(breaks = seq(-10, 10, 2),
+                               labels = seq(-10, 10, 2) %>% 
+                               abs %>% paste0 ("%"))
+                               
+
+library (ggthemes)
+
+gg_plot + theme_minimal(base_family =  "mono")
+
+gg_plot + theme_bw()
+
+gg_plot + theme_light()
+
+gg_plot + theme_excel()
+
+gg_plot + theme_few()
+
+gg_plot + theme_economist()
+
+gg_plot + theme_wsj()
+
+gg_plot + theme_fivethirtyeight()
+
+gg_plot + theme_solarized(base_family =  "mono")
+
+gg_plot + theme_dark()
+
+```                         
+
 
 
 ```{r}
@@ -195,69 +240,90 @@ WB_data_edited %>% filter (year == 2006) %>%
 
 popDistr_2006 <-   WB_data_edited %>% filter (year == 2006) %>% 
                    ggplot () + 
-                   geom_col (aes(x = Age, y = perc_male), fill = "#2863a6") +
+                   geom_col (aes(x = Age, y = -perc_male), fill = "#2863a6") +
                    geom_col (aes(x = Age, y = perc_female), fill = "orange") +
                    coord_flip() +
                    labs (x = "Age Groups (in years)",
-                         y = "Percentage Distribution (%)",
-                         title = "NG Population Distribution, 2006") +
-                   theme_bw () +
+                         y = "Percentage Distribution",
+                         title = "NG Population Distribution, 2006 - theme_gray") +
+                   theme_gray (base_family =  "mono") +
                    theme (axis.title.x = element_text(size = 9.5, 
                                                       margin = unit(c(0.25, 0, 0, 0), "cm")),
                           axis.title.y = element_text(size = 9.5, 
                                                       margin = unit(c(0, 0.25, 0, 0), "cm")),
-                          plot.title = element_text(size = 11.5, face = "bold"))
+                          plot.title = element_text(size = 11.5, face = "bold"),
+                          axis.text.x = element_text(size = 9),
+                          axis.text.y = element_text(size = 9)) +
+                    scale_y_continuous(breaks = seq(-10, 10, 2),
+                               labels = seq(-10, 10, 2) %>% 
+                               abs %>% paste0 ("%"))
 
 ## Pop Distribution, 2010
 
 popDistr_2010 <-   WB_data_edited %>% filter (year == 2010) %>% 
                    ggplot () + 
-                   geom_col (aes(x = Age, y = perc_male), fill = "#2863a6") +
+                   geom_col (aes(x = Age, y = -perc_male), fill = "#2863a6") +
                    geom_col (aes(x = Age, y = perc_female), fill = "orange") +
                    coord_flip() +
                    labs (x = "Age Groups (in years)",
-                         y = "Percentage Distribution (%)",
-                         title = "NG Population Distribution, 2010") +
-                   theme_bw () +
+                         y = "Percentage Distribution",
+                         title = "NG Population Distribution, 2010 - theme_classic") +
+                   theme_classic () +
                    theme (axis.title.x = element_text(size = 9.5, 
                                                       margin = unit(c(0.25, 0, 0, 0), "cm")),
                           axis.title.y = element_text(size = 9.5, 
                                                       margin = unit(c(0, 0.25, 0, 0), "cm")),
-                          plot.title = element_text(size = 11.5, face = "bold"))
+                          plot.title = element_text(size = 11.5, face = "bold"),
+                          axis.text.x = element_text(size = 9),
+                          axis.text.y = element_text(size = 9)) +
+                    scale_y_continuous(breaks = seq(-10, 10, 2),
+                               labels = seq(-10, 10, 2) %>% 
+                               abs %>% paste0 ("%"))
 
 ## Pop Distribution, 2014
 
 popDistr_2014 <-   WB_data_edited %>% filter (year == 2014) %>% 
                    ggplot () + 
-                   geom_col (aes(x = Age, y = perc_male), fill = "#2863a6") +
+                   geom_col (aes(x = Age, y = -perc_male), fill = "#2863a6") +
                    geom_col (aes(x = Age, y = perc_female), fill = "orange") +
                    coord_flip() +
                    labs (x = "Age Groups (in years)",
-                         y = "Percentage Distribution (%)",
-                         title = "NG Population Distribution, 2014") +
-                   theme_bw () +
+                         y = "Percentage Distribution",
+                         title = "NG Population Distribution, 2014 - theme_minimal") +
+                   theme_minimal (base_family =  "mono") +
                    theme (axis.title.x = element_text(size = 9.5, 
                                                       margin = unit(c(0.25, 0, 0, 0), "cm")),
                           axis.title.y = element_text(size = 9.5, 
                                                       margin = unit(c(0, 0.25, 0, 0), "cm")),
-                          plot.title = element_text(size = 11.5, face = "bold"))
+                          plot.title = element_text(size = 11.5, face = "bold"),
+                          axis.text.x = element_text(size = 9),
+                          axis.text.y = element_text(size = 9)) +
+                    scale_y_continuous(breaks = seq(-10, 10, 2),
+                               labels = seq(-10, 10, 2) %>% 
+                               abs %>% paste0 ("%"))
 
 ## Pop Distribution, 2018
 
 popDistr_2018 <-   WB_data_edited %>% filter (year == 2018) %>% 
-                   ggplot () + 
-                   geom_col (aes(x = Age, y = perc_male), fill = "#2863a6") +
-                   geom_col (aes(x = Age, y = perc_female), fill = "orange") +
+                   ggplot (aes(x = Age)) + 
+                   geom_col (aes(y = -perc_male), fill = "#2863a6") +
+                   geom_col (aes(y = perc_female), fill = "orange") +
                    coord_flip() +
                    labs (x = "Age Groups (in years)",
-                         y = "Percentage Distribution (%)",
-                         title = "NG Population Distribution, 2018") +
+                         y = "Percentage Distribution",
+                         title = "NG Population Distribution, 2018 - theme_bw") +
                    theme_bw () +
                    theme (axis.title.x = element_text(size = 9.5, 
                                                       margin = unit(c(0.25, 0, 0, 0), "cm")),
                           axis.title.y = element_text(size = 9.5, 
                                                       margin = unit(c(0, 0.25, 0, 0), "cm")),
-                          plot.title = element_text(size = 11.5, face = "bold"))
+                          plot.title = element_text(size = 11.5, face = "bold"),
+                          axis.text.x = element_text(size = 9),
+                          axis.text.y = element_text(size = 9)) +
+                   scale_y_continuous(breaks = seq(-10, 10, 2),
+                               labels = seq(-10, 10, 2) %>% 
+                               abs %>% paste0 ("%"))
+                               
 
 
 library (ggpubr)
@@ -268,20 +334,130 @@ ggarrange(popDistr_2006,
           popDistr_2018,
           ncol = 2, nrow = 2, 
           align = "v")
-          
-ggsave ("./2020/Workshops/DemogRaphic Research and Data Analysis/Day 3 - Data Visualization/Pop Pyramid.jpg", dpi = 300, height = 9, width = 9)
 
 ```
 
 <img align="right" src="Pop Pyramid.jpg">
 
 
+
+
+```{r}
+
+library (readstata13)
+
+agyw_dataset <- read.dta13("./2020/Workshops/DemogRaphic Research and Data Analysis/Data - Misc/Nigeria [DHS].dta")
+
+
+```
+
+
+
+
 # `ggplot2` Extras - [Extensions](http://www.ggplot2-exts.org/gallery/)
-sdfd
+
+
+```{r}
+
+
+Region_filter <- read_xls("./2020/Workshops/DemogRaphic Research and Data Analysis/Data - Misc/TFR_Africa.xls",
+                          sheet = "Metadata - Countries") %>% 
+                 filter(Region == "Sub-Saharan Africa")
+
+TFR_data      <- read_xls("./2020/Workshops/DemogRaphic Research and Data Analysis/Data - Misc/TFR_Africa.xls",
+                          sheet = "Data") %>% 
+                 filter (`Country Code` %in% Region_filter$`Country Code`) %>% 
+                 select(-c("Indicator Name",	"Indicator Code")) %>% 
+                 gather(key = "Year", value = "TFR",
+                         `1960`:`2018`) %>% 
+                 filter(is.na(TFR) == FALSE)
+
+LE_data       <- read_xls("./2020/Workshops/DemogRaphic Research and Data Analysis/Data - Misc/Life Expectancy_Africa.xls",
+                          sheet = "Data") %>% 
+                 filter(`Country Code` %in% Region_filter$`Country Code`) %>% 
+                 select(-c("Indicator Name",	"Indicator Code")) %>% 
+                 gather(key = "Year", value = "LE",
+                        `1960`:`2018`) %>% 
+                 filter(is.na(LE) == FALSE)
+
+
+region_codes  <- read.csv("./2020/Workshops/DemogRaphic Research and Data Analysis/Data - Misc/region_codes.csv") %>% 
+                 filter(sub.region == "Sub-Saharan Africa") %>% 
+                 mutate(`Country Code` = alpha.3) %>% 
+                 select(`Country Code`, intermediate.region)
+  
+
+
+
+merged_data <- inner_join(y = LE_data,
+                          x = TFR_data,
+                          by = c("Country Name", 
+                                 "Country Code",
+                                 "Year")) %>% 
+               left_join(y = region_codes,
+                         by = "Country Code") %>% 
+               mutate(Year = as.numeric(Year)) %>% 
+               filter(is.na(intermediate.region) == FALSE)
+  
+library (gganimate)
+
+animat <- merged_data %>% 
+          ggplot(mapping = aes(x = LE,
+                               y = TFR,
+                               color = intermediate.region)) +
+                  geom_point(size = 6, alpha = 0.7) + 
+                  scale_colour_brewer(palette = "Set1") +
+                  theme_solarized(base_family =  "mono") + 
+                  geom_text(vjust = 0, nudge_y = 0.25,
+                            aes(label = `Country Name`),
+                            size = 3.5) +
+                theme (plot.title = element_text(size = 13, colour = "#DC143C", 
+                                                 face = "bold",
+                                                 lineheight=1.3),
+                       plot.subtitle = element_text(size = 11.5),
+                       axis.title.y = element_text(margin = margin(t = 0, r = 9, b = 0, l = 0)),
+                       axis.title.x = element_text(margin = margin(t = 7, r = 0, b = 0, l = 0)),
+                       legend.position = "bottom") + 
+                labs(y = "Total Fertility Rate (TFR)",
+                     x = "Life Expectancy (Years)",
+                     color = "Sub-region",
+                     title = "Relationship between Total Fertility Rate and \nLife Expectancy in sub-Saharan African Countries?",
+                     subtitle = "Year: {frame_time}",
+                     caption = "Source: WorldBank Open Data \n\nEmmanuel Olamijuwon (twitter.com/eolamijuwon)") +
+              shadow_mark(alpha = 0.2, size = 0.8) + 
+              transition_time(as.integer(Year)) 
+
+
+
+animate(animat, fps = 6, duration = 30, end_pause = 10,
+        height=550, width=900,
+        res = 80, rewind = FALSE,
+        gifski_renderer("FertilityLE.gif"))
+  
+  
+    anim_save("./2020/Workshops/DemogRaphic Research and Data Analysis/Day 3 - Data Visualization/FertilityLE.gif")
+
+
+```
+
+<img align="right" src="FertilityLE.gif">
+
 
 # Save/Export plots
 
-fds
+```{r}
+
+## Save GGPlot2
+         
+ggsave ("./2020/Workshops/DemogRaphic Research and Data Analysis/Day 3 - Data Visualization/Pop Pyramid.jpg", dpi = 300, height = 9, width = 11)
+
+
+## Save Animation
+
+anim_save("./2020/Workshops/DemogRaphic Research and Data Analysis/Day 3 - Data Visualization/FertilityLE.gif")
+
+
+```
 
 # Lab Exercises
 
