@@ -82,6 +82,8 @@ For the session, you will be required to have R and Rstudio installed on your co
 
 -  Basic Demographic Measures
 
+    - Age Dependency Ratios
+
 -  Life Expectancy
 
 -  Migration Expectancy
