@@ -67,9 +67,9 @@ For the session, you will be required to have R and Rstudio installed on your co
 
     -  geoms [`waffle`](https://github.com/hrbrmstr/waffle)
 
-    -  [`ggthemes`](https://ggplot2.tidyverse.org/reference/ggtheme.html)
-
 -   `ggplot2` Extras - [Extensions](http://www.ggplot2-exts.org/gallery/)
+
+    -  [`ggthemes`](https://ggplot2.tidyverse.org/reference/ggtheme.html)
 
     -  [`gganimate`](https://gganimate.com/articles/gganimate.html)
     
@@ -80,15 +80,11 @@ For the session, you will be required to have R and Rstudio installed on your co
 
 ### Day 4: Basic Demographic Methods
 
--  Population Pyramids with `{ggplot}`
-
 -  Basic Demographic Measures
 
 -  Life Expectancy
 
 -  Migration Expectancy
-
--  Practical Session
 
 -  Standardization of Demographic Measures
 
