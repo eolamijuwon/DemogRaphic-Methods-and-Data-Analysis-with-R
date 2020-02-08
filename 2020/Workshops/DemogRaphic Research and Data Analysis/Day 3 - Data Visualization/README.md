@@ -370,8 +370,6 @@ ggarrange(popDistr_2006,
 
 
 
-
-
 # `ggplot2` Extras - [Extensions](http://www.ggplot2-exts.org/gallery/)
 
 ```{r}
