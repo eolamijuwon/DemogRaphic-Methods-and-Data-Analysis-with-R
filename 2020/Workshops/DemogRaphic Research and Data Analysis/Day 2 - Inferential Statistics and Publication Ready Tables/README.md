@@ -148,13 +148,15 @@ Some common regression models in social sciences are:
   
 - Survival models
 
-  - Cox-proportional hazard models
+  - Cox-proportional hazard models `coxph()` from `survival` package
   
-  - Competing risks models
+  - Competing risks models `cuminc()` from `cmprsk` package
 
 
 
 ## Logistic Regression Model - adjusting for complex survey design
+
+```{r}
 
 WmCuse_logReg_I <- svyglm (mCuse ~ relevel(teen_educ, ref = "Secondary +"),
                     dhs_design, family = binomial(link="logit"))
@@ -172,7 +174,7 @@ mCuse_logReg_II <- glm (mCuse ~ relevel(teen_educ, ref = "Secondary +") +
 
 summary(mCuse_logReg_II)    
     
-
+```
 
 
 
