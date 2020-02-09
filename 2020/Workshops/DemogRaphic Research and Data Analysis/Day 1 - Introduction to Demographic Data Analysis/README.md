@@ -57,10 +57,39 @@ print (age)
 
 ```
 
-Note that we used a function *`print`* in the above examples. Functions are built in capabilities of R (base R) or could be gotten from libraries (see ##packages) or you could write one. Executing a function is reffered to as *calling* the function. Most functions can take several arguments (details can be found on the package website).
-
 ## R Functions
 
+A function is a set of statements organized together to perform a specific task. 
+
+R has a large number of built-in functions which can be directly called in the program without defining them first. As a user, one can create his/her own functions. An R function is created by using the keyword `function` and a basic syntax of an R function definition is as follows −
+
+```{r}
+function_name <- function(arg_1, arg_2, ...) {
+
+   Function body 
+
+}
+```
+
+The different parts of a function are −
+
+- Function Name − This is the actual name of the function. It is stored in R environment as an object with this name.
+
+- Arguments − An argument is a placeholder. When a function is invoked, you pass a value to the argument. Arguments are optional; that is, a function may contain no arguments. Also arguments can have default values.
+
+- Function Body − The function body contains a collection of statements that defines what the function does.
+
+- Return Value − The return value of a function is the last expression in the function body to be evaluated/displayed.
+
+
+```{r}
+function_name <- function(arg_1, arg_2, ...) {
+
+    ## Do great things
+}
+```
+
+Note that we used a function *`print`* in the above examples. Functions are built in capabilities of R (base R) or could be gotten from libraries (see ##packages) or you could write one. Executing a function is reffered to as *calling* the function. Most functions can take several arguments (details can be found on the package website).
 
 #### Exercise 1A.1
 

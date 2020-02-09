@@ -20,7 +20,9 @@ For the session, you will be required to have R and Rstudio installed on your co
 -   Introduction to R and RStudio – editor
 
     -  R syntax and Basic operations: assigning
-
+    
+    -  R functions
+    
     -  R packages -e.g. [`tidyverse`](https://www.tidyverse.org/learn/) 
     
 -   Data handling: import/export data to/from R

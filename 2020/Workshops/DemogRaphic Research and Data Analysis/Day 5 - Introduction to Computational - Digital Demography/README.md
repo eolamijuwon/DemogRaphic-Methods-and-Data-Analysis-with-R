@@ -35,17 +35,17 @@ create_token(app=app_name, consumer_key=consumer_key,
 
 ```{r}
 
-keywords <- c("\"visa ban\"", "\"ban\"",
+keywords <- c("\"visa ban\"", "ban",
               "\"from the US\"",
               "\"in the US\"",
               "\"immigrant visa\"",
               "\"visa restriction\"")
 
-visaBan_NG <- Map("search_tweets", n=10000, keywords,
+NvisaBan_NG <- Map("search_tweets", n=10000, keywords,
               geocode = "9.06048,7.48324,400mi",
               include_rts = FALSE, retryonratelimit = TRUE)
 
-DF_visaBan_NG <-  do_call_rbind(visaBan_NG)
+NDF_visaBan_NG <-  do_call_rbind(NvisaBan_NG)
 
 save_as_csv(DF_visaBan_NG, "./2020/Workshops/DemogRaphic Research and Data Analysis/Data - Misc/visaBan_NG.csv",
             prepend_ids = TRUE, na = "NA")
@@ -106,22 +106,86 @@ Using the information available in the `ImmigrantBan_NG` dataset. Find the:
 
 ```{r}
 
-word_ImmigrantBan_NG <- ImmigrantBan_NG %>%
-                        select(text, created_at, user_id, 
-                               favorite_count, retweet_count) %>% 
+tidy_ImmigrantBan_NG <- ImmigrantBan_NG %>%
+                        select(created_at, text, 
+                              favorite_count, 
+                              retweet_count) %>%
                         mutate (text = as.character(text)) %>% 
-                        unnest_tokens("word", text) %>% 
-                        removeNumbers(word_ImmigrantBan_NG$word)
+                        mutate(text = gsub(text, pattern = "@\\w+", replacement = "")) %>% 
                         
-word <- removeNumbers(word)
+                        # removes tweets with the word "okada" OR "keke" since it's not related to the immigrant visa ban
+                        filter (!str_detect(text, pattern = "okada"),
+                                !str_detect(text, pattern = "Okada"),
+                                !str_detect(text, pattern = "OKADA"),
+                                !str_detect(text, pattern = "keke"),
+                                !str_detect(text, pattern = "Keke"),
+                                !str_detect(text, pattern = "KEKE"))
+                                
+                                
+word_ImmigrantBan_NG <- tidy_ImmigrantBan_NG %>% 
+                        unnest_tokens(bigram, text, token = "ngrams", n = 3) %>% 
+                        separate(bigram, c("word1", "word2", "word3"), sep = " ") %>%  
+                        
+                        filter(!word1 %in% stop_words$word,       # remove stopwords from both words in bi-gram
+                               !word2 %in% stop_words$word,       # remove stopwords from both words in bi-gram
+                               !word3 %in% stop_words$word) %>% 
+                               
+                        filter(!str_detect(word1, pattern = "[[:digit:]]"), # removes any words with numeric digits
+                               !str_detect(word2, pattern = "[[:digit:]]"),
+                               !str_detect(word3, pattern = "[[:digit:]]"),
+                               
+                               !str_detect(word1, pattern = "[[:punct:]]"), # removes any remaining punctuations
+                               !str_detect(word2, pattern = "[[:punct:]]"),
+                               !str_detect(word3, pattern = "[[:punct:]]"),
+                               
+                               !str_detect(word1, pattern = "(.)\\1{2,}"),  # removes any words with 3 or more repeated letters
+                               !str_detect(word2, pattern = "(.)\\1{2,}"),
+                               !str_detect(word3, pattern = "(.)\\1{2,}"),
+                               
+                               !str_detect(word1, pattern = "\\b(.)\\b")) %>%  # removes any remaining single letter words
+                               # !str_detect(word2, pattern = "\\b(.)\\b")
+                               # !str_detect(word3, pattern = "\\b(.)\\b")) 
+                               
+                       unite("bigram", c(word1, word2, word3), sep = " ") %>%
+                       count(bigram, sort = TRUE)
+
+```
 
 
-words_politicalZA$word <- 
-    removePunctuation(words_politicalZA$word)
 
 
-head(word_ImmigrantBan_NG, n=15)
 
+```{r}
+
+text_immigration <-  tidy_ImmigrantBan_NG %>%
+                     select(created_at, text, 
+                            favorite_count, 
+                            retweet_count) %>%
+                     unnest_tokens("word", text) %>%
+                     anti_join(stop_words, by = "word") %>%
+                     inner_join(y = sentiments, by = "word") %>% 
+                     count(created_at, sentiment) %>% 
+                     group_by(created_at) %>% 
+                     mutate (perc_nega = (n/sum(n))*100) %>% 
+                     mutate (perc_nega = round (perc_nega, digits = 2),
+                             sentiment = as.factor (sentiment))
+
+```
+
+```{r}
+
+library(ggthemes)
+
+    text_immigration %>% 
+    ggplot (aes(x = created_at, y = perc_nega,
+                fill = factor(sentiment, 
+                        labels = c("Negative",
+                                    "Positive")))) +
+    geom_bar (stat = "identity") + 
+    theme_fivethirtyeight () +
+    labs (title = "Sentiment of Tweets Related to US Immigration Ban") +
+    guides(fill=guide_legend(title="Sentiment of Tweets")) +
+    scale_fill_manual(values = c("#ffb612", "#000000"))
 
 
 ```
