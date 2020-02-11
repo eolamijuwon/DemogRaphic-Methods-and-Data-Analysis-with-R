@@ -8,7 +8,7 @@ Date: "11 February 2020"
 #
 
 
-<img align="right" src="Data - Misc/wildlifeStrikes.png">
+<img align="right" src="../Data - Misc/wildlifeStrikes.png">
 
 
 Visualizing top internation migration flows to South Africa using data from the 2016 community survey. Map and chart can be reproduced using the R code available [here](https://github.com/eolamijuwon/TidyTuesday/blob/master/migration_flows_ZA/Migration_flows_ZA.R)
