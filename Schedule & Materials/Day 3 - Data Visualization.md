@@ -37,13 +37,20 @@ In this session, you will learn how to visualize your data using `ggplot2` one o
 #
 # Principles of Data Visualization
 
-<img align="right" src="../Data - Misc/savaging the pie.mp4">
+<img align="right" src="../Data - Misc/savaging the pie.gif">
 
 - Give Context: An effective data visualization relies on not just the type of information visualized but also the amount of information that gives more specific insight that supports your story. An effective data visualization should provide enough color to make your data meaningful and guide readers to the appropriate conclusion.
 
 - **C**onsistent, **C**lear, and **E**ngaging: Good data visualizations should have an overall style that should be similar for all graphs. They should easily be understandable by readers and reflect the tone and subject matter in the most attractive manner.
 
 - A good data visualization should also be accurate and not misrepresent data.
+
+
+
+
+# Impressive data visualization showcases [{tidytuesday}](https://nsgrantham.shinyapps.io/tidytuesdayrocks/), [{R-Graph Gallery}](https://www.r-graph-gallery.com/index.html)
+
+<img align="center" src="../Data - Misc/tidytuesday.gif"> 
 
 
 <img align="right" src="../Data - Misc/wildlifeStrikes.png">
@@ -66,11 +73,6 @@ Visualizing internal migration flows in South Africa using data from the 2016 co
 
 
 
-
-
-# Impressive data visualization showcases [{tidytuesday}](https://nsgrantham.shinyapps.io/tidytuesdayrocks/), [{R-Graph Gallery}](https://www.r-graph-gallery.com/index.html)
-
-<img align="center" src="../Data - Misc/tidytuesday.gif"> 
 
 
 # `ggplot2` Basics
