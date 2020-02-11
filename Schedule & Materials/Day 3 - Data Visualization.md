@@ -27,7 +27,7 @@ Date: "12 February 2020"
 
 Visual communication is a non-text based representation of data and it is the most powerful medium of transferring volumes of information in the most efficient, engaging and easy to synthesize manner. As you comb through your data, you may find opportunities for visualization. Looking for
 
-A well designed visualization can be used to find relationships in a data. This could include: *Comparisons*, *hierarchy*, *anatomy*, *chronology*, *processes*, and *geography*. This opportunity may help uncover interesting and useful insights such as: *correlations*, *outliers*, and *trends*. 
+A well designed visualization can be used to find relationships in a data. This could include: *comparisons*, *hierarchy*, *anatomy*, *chronology*, *processes*, and *geography*. This opportunity may help uncover interesting and useful insights such as: *correlations*, *outliers*, and *trends*. 
 
 
 In this session, you will learn how to visualize your data using `ggplot2` one of the core members of the tidyverse. R has several systems for making graphs, but ggplot2 is one of the **most elegant** and **most versatile**. `ggplot2` implements the grammar of graphics, a coherent system for describing and building graphs. If you’d like to learn more about the theoretical underpinnings of ggplot2 before you start, I’d recommend reading “A Layered Grammar of Graphics”.
@@ -37,11 +37,13 @@ In this session, you will learn how to visualize your data using `ggplot2` one o
 #
 # Principles of Data Visualization
 
-<img align="right" src="../Data - Misc/wildlifeStrikes.png">
+<img align="right" src="../Data - Misc/savaging the pie.mp4">
 
 - Give Context: An effective data visualization relies on not just the type of information visualized but also the amount of information that gives more specific insight that supports your story. An effective data visualization should provide enough color to make your data meaningful and guide readers to the appropriate conclusion.
 
 - **C**onsistent, **C**lear, and **E**ngaging: Good data visualizations should have an overall style that should be similar for all graphs. They should easily be understandable by readers and reflect the tone and subject matter in the most attractive manner.
+
+- A good data visualization should also be accurate and not misrepresent data.
 
 
 <img align="right" src="../Data - Misc/wildlifeStrikes.png">
