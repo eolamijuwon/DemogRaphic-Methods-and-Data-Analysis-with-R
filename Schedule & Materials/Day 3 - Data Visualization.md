@@ -92,13 +92,6 @@ There are three main plotting systems in R, the base plotting system `plot`, the
 
 Here we will introduce the ggplot2 package, which has recently soared in popularity. ggplot allows you to create graphs for univariate and multivariate numerical and categorical data in a straightforward manner. It also allows for easy grouping and conditioning. It can generate complex plots create high quality graphics for publication.
 
-
-
-A Graphing Template
-Let’s turn this code into a reusable template for making graphs with ggplot2. To make a graph, replace the bracketed sections in the following code with a dataset, a geom function, or a collection of mappings:
-
-
-
 ```{r}
 
 library(<tidyverse>ggplot2)
@@ -108,7 +101,8 @@ ggplot(data = <DATA>) +
     <THEME_FUNCTION>() 
 
 ```
-The rest of this chapter will show you how to complete and extend this template to make different types of graphs. We will begin with the <MAPPINGS> component.
+
+Above is a graphing template for making graphs with `ggplot2`. To make a graph, replace the bracketed sections in the following code with a dataset, a geom function, or a collection of mappings. In the following sections, we will complete and extend this template to make different types of graphs begining with the <MAPPINGS> component.
 
 
 ### <DATA>
