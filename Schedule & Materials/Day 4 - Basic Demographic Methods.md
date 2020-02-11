@@ -1,7 +1,7 @@
 ---
-Title: "Inferential Statistics and Publication Ready Tables in R"
+Title: "Basic Demographic Methods"
 
-Date: "11 February 2020"
+Date: "13 February 2020"
 ---
 
 

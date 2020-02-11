@@ -1,7 +1,7 @@
 ---
-Title: "Inferential Statistics and Publication Ready Tables in R"
+Title: "Basic Data Visualization in R"
 
-Date: "11 February 2020"
+Date: "12 February 2020"
 ---
 
 
