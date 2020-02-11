@@ -8,16 +8,15 @@ Date: "11 February 2020"
 #
 
 
-
-<img align="right" src="wildlifeStrikes.png">
+<img align="right" src="Data - Misc/wildlifeStrikes.png">
 
 
 Visualizing top internation migration flows to South Africa using data from the 2016 community survey. Map and chart can be reproduced using the R code available [here](https://github.com/eolamijuwon/TidyTuesday/blob/master/migration_flows_ZA/Migration_flows_ZA.R)
 
-<img align="center" src="_ImmigrationFlows_ZA.PNG">
+<img align="center" src="Data - Misc/_ImmigrationFlows_ZA.PNG">
 
 
-<img align="center" src="MigrationFlows.PNG"> 
+<img align="center" src="Data - Misc/MigrationFlows.PNG"> 
 
 Visualizing internal migration flows in South Africa using data from the 2016 community survey and `chorddiag` package with code adapted from [Data-to-Viz](https://www.data-to-viz.com/graph/chord.html). A reproducible code for the chart is available [here](https://github.com/eolamijuwon/TidyTuesday/blob/master/migration_flows_ZA/Migration_flows_ZA.R)
 
@@ -57,7 +56,7 @@ This chapter focuses on ggplot2, one of the core members of the tidyverse. To ac
 
 # Impressive data visualization showcases [{tidytuesday}](https://nsgrantham.shinyapps.io/tidytuesdayrocks/), [{R-Graph Gallery}](https://www.r-graph-gallery.com/index.html)
 
-<img align="center" src="tidytuesday.gif"> 
+<img align="center" src="Data - Misc/tidytuesday.gif"> 
 
 
 # `ggplot2` Basics
@@ -366,7 +365,7 @@ ggarrange(popDistr_2006,
 
 ```
 
-<img align="right" src="Pop Pyramid.jpg">
+<img align="right" src="Data - Misc/Pop Pyramid.jpg">
 
 
 
@@ -437,7 +436,7 @@ animate(animat, fps = 6, duration = 30, end_pause = 10,
 
 ```
 
-<img align="right" src="FertilityLE.gif">
+<img align="right" src="Data - Misc/FertilityLE.gif">
 
 
 # Save/Export plots
