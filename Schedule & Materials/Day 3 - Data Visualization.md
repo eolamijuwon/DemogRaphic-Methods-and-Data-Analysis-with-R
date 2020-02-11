@@ -46,17 +46,12 @@ In this session, you will learn how to visualize your data using `ggplot2` one o
 - A good data visualization should also be accurate and not misrepresent data. A misleading data visualization not only corrupt your narrative but also threatens your reputation. Some common mistakes with data accuracy are:
 
   - Pie chart that does not add up to 100%
-  
   - Truncating the y-axis such that a small difference appears big
   
 - Also note the following:
-
   - Who is you audience?
-  
   - Where are they from?
-  
   - What is their demographic?
-  
   - Choose the correct visualization for your data type.
   
   
