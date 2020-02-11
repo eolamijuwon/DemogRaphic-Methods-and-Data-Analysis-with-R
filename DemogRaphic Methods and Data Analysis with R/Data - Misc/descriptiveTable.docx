@@ -1,0 +1,35 @@
+
+---
+  output: word_document
+---
+
+
+
+
+Table: Summary descriptives table
+
+                                                           [ALL]   N=3060     N   
+--------------------------------------------------------  ----------------  ------
+mCuse:                                                                       3060 
+&nbsp;&nbsp;&nbsp;&nbsp;Not Using Modern Contraceptives     2652 (86.7%)          
+&nbsp;&nbsp;&nbsp;&nbsp;Using Modern Contraceptives         408 (13.3%)           
+religion:                                                                    3060 
+&nbsp;&nbsp;&nbsp;&nbsp;Catholic                            205 (6.70%)           
+&nbsp;&nbsp;&nbsp;&nbsp;Other Christian                     1019 (33.3%)          
+&nbsp;&nbsp;&nbsp;&nbsp;Muslim                              1820 (59.5%)          
+&nbsp;&nbsp;&nbsp;&nbsp;Others                               16 (0.52%)           
+region:                                                                      3060 
+&nbsp;&nbsp;&nbsp;&nbsp;north central                       535 (17.5%)           
+&nbsp;&nbsp;&nbsp;&nbsp;north east                          763 (24.9%)           
+&nbsp;&nbsp;&nbsp;&nbsp;north west                          889 (29.1%)           
+&nbsp;&nbsp;&nbsp;&nbsp;south east                          201 (6.57%)           
+&nbsp;&nbsp;&nbsp;&nbsp;south south                         387 (12.6%)           
+&nbsp;&nbsp;&nbsp;&nbsp;south west                          285 (9.31%)           
+teen_educ:                                                                   3060 
+&nbsp;&nbsp;&nbsp;&nbsp;< Secondary                         1597 (52.2%)          
+&nbsp;&nbsp;&nbsp;&nbsp;Secondary +                         1463 (47.8%)          
+residence:                                                                   3060 
+&nbsp;&nbsp;&nbsp;&nbsp;urban                               905 (29.6%)           
+&nbsp;&nbsp;&nbsp;&nbsp;rural                               2155 (70.4%)          
+
+
