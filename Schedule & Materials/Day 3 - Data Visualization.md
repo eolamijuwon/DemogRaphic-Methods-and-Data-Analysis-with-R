@@ -44,7 +44,6 @@ In this session, you will learn how to visualize your data using `ggplot2` one o
 - **C**onsistent, **C**lear, and **E**ngaging: Good data visualizations should have an overall style that should be similar for all graphs. They should easily be understandable by readers and reflect the tone and subject matter in the most attractive manner.
 
 - A good data visualization should also be accurate and not misrepresent data. A misleading data visualization not only corrupt your narrative but also threatens your reputation. Some common mistakes with data accuracy are:
-
   - Pie chart that does not add up to 100%
   - Truncating the y-axis such that a small difference appears big
   
@@ -54,10 +53,6 @@ In this session, you will learn how to visualize your data using `ggplot2` one o
   - What is their demographic?
   - Choose the correct visualization for your data type.
   
-  
-  
-
-
 
 
 # Impressive data visualization showcases [{tidytuesday}](https://nsgrantham.shinyapps.io/tidytuesdayrocks/), [{R-Graph Gallery}](https://www.r-graph-gallery.com/index.html)
