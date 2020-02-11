@@ -43,7 +43,24 @@ In this session, you will learn how to visualize your data using `ggplot2` one o
 
 - **C**onsistent, **C**lear, and **E**ngaging: Good data visualizations should have an overall style that should be similar for all graphs. They should easily be understandable by readers and reflect the tone and subject matter in the most attractive manner.
 
-- A good data visualization should also be accurate and not misrepresent data.
+- A good data visualization should also be accurate and not misrepresent data. A misleading data visualization not only corrupt your narrative but also threatens your reputation. Some common mistakes with data accuracy are:
+
+  - Pie chart that does not add up to 100%
+  
+  - Truncating the y-axis such that a small difference appears big
+  
+- Also note the following:
+
+  - Who is you audience?
+  
+  - Where are they from?
+  
+  - What is their demographic?
+  
+  - Choose the correct visualization for your data type.
+  
+  
+  
 
 
 
@@ -69,15 +86,7 @@ Visualizing internal migration flows in South Africa using data from the 2016 co
 
 
 
-
-
-
-
-
-
 # `ggplot2` Basics
-
-
 
 There are three main plotting systems in R, the base plotting system `plot`, the `lattice` package, and the `ggplot2` package.
 
@@ -87,8 +96,6 @@ Here we will introduce the ggplot2 package, which has recently soared in popular
 
 A Graphing Template
 Let’s turn this code into a reusable template for making graphs with ggplot2. To make a graph, replace the bracketed sections in the following code with a dataset, a geom function, or a collection of mappings:
-
-
 
 
 
