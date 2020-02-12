@@ -5,7 +5,7 @@ Title: DemogRaphic Research and Data Analysis
 ---
 
 
-<img align="right" src="../Data - Misc/oye_entrance.jpg">
+<img align="centre" src="Data - Misc/oye_entrance.jpg">
 
 
 # Introduction
