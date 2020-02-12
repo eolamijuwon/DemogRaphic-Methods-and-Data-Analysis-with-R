@@ -3,9 +3,6 @@ Title: "Basic Demographic Methods"
 
 Date: "13 February 2020"
 
-output:
-  github_document:
-    pandoc_args: --webtex
 ---
 
 
@@ -207,7 +204,7 @@ taiwan_death <- taiwan_pop * taiwan_rate
 
 #### Exercise
 Find the crude death rates for Canada and Taiwan in 2014
-*Hint:* CDR = $\frac{Number of deaths in year (x)}{Total population in year (x)}$
+*Hint:* CDR = $$\frac{Number of deaths in year (x)}{Total population in year (x)}$$
 
 
 
