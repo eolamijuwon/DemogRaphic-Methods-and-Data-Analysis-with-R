@@ -5,6 +5,9 @@ Title: DemogRaphic Research and Data Analysis
 ---
 
 
+<img align="right" src="../Data - Misc/oye_entrance.jpg">
+
+
 # Introduction
 
 The purpose of this workshop is to introduce participants to demographic research and data analysis using R. Subsequently, the workshop will cover the use of R for basic demographic methods and a demo on the emerging field of computation and digital demography. As you may have already known, R is a **powerful**, cross-platform, open-source, and **free** software that has been widely adopted across a number of [social]science fields. The session will focus on laying a groundwork to enable future self-teaching of specific use cases *[models, packages, analysis]*. A number of platforms provide *free* training resources for learning R online. This includes but not limited to *[edX](https://www.edx.org/)*, *[Cousera](https://www.coursera.org/)*, *[Udacity](https://www.udacity.com/)*, and of course *[YouTube](https://www.youtube.com/)*, 
