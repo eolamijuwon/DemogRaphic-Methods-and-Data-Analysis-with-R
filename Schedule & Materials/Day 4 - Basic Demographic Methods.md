@@ -204,7 +204,7 @@ taiwan_death <- taiwan_pop * taiwan_rate
 
 #### Exercise
 Find the crude death rates for Canada and Taiwan in 2014
-*Hint:* CDR = $$\frac{Number of deaths in year (x)}{Total population in year (x)}$$
+*Hint:* CDR = <span class="inlinecode">$\frac{Number of deaths in year (x)}{Total population in year (x)}$</span>
 
 
 
