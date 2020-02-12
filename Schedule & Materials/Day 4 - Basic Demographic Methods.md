@@ -2,6 +2,10 @@
 Title: "Basic Demographic Methods"
 
 Date: "13 February 2020"
+
+output:
+  github_document:
+    pandoc_args: --webtex
 ---
 
 
