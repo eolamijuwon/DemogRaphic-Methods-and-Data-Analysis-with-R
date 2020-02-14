@@ -131,7 +131,7 @@ Help is always online.
 
 -   [Twitter](https://twitter.com) – A microblog for the interacting with the R community.
 
-- You can also connect with the group on [OyeRstat](https://join.slack.com/t/oyerstat/shared_invite/enQtOTM1NzUzNjk5MzYxLWVjMWQ3YTI3ZDRjMWE0YjNiMjM1NDQ1Mjg1ZmZiODIyYWUxYzQ3YmRhODljZTQxNTVjZDBkODQ1ZmYyMDgzMDg) slack group
+- You can also connect via [OyeRstat](https://join.slack.com/t/oyerstat/shared_invite/enQtOTM1NzUzNjk5MzYxLWVjMWQ3YTI3ZDRjMWE0YjNiMjM1NDQ1Mjg1ZmZiODIyYWUxYzQ3YmRhODljZTQxNTVjZDBkODQ1ZmYyMDgzMDg) slack group
 
 among others.
 
