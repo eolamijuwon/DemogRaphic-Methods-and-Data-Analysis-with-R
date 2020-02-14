@@ -21,11 +21,11 @@ library (tidytext)
 
 ```{r}
 
-consumer_key <- "xxxconsumerkeyxxx"
-consumer_secret <- "xxxconsumerSecretxxxx"
-app_name <- "ComputationalDemOe"
-access_token <- "xxxxaccess-tokenxxxx"
-access_secret <- "xxxxxaccess-secretxxxxx"
+consumer_key <- "KXE42xpgIwvk2wWANpKJNepcJ"
+consumer_secret <- "pWxJOmkvQb0sH1yxkLx3ILYnh4AbrQcCIYW8eFYSI9q6UnxrAe"
+app_name <- "ComputationalS_S"
+access_token <- "923594581429641216-q79UzH3QDIUfKcIReTV65zc1jUqQIWH"
+access_secret <- "T7FvQ5hektbfLUCseIaCiaRwEVcqdZq9kIIHIVusyb7bo"
 
 create_token(app=app_name, consumer_key=consumer_key,
              consumer_secret=consumer_secret,
