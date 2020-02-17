@@ -12,43 +12,55 @@ output: pdf_document
 
 # Basic Demographic Measures
 
+In this session, we will cover some basic concepts and techniques of demographic analysis using R. Participants will become familiar with some basic measures of fertility, mortality (including standardization) and population dynamics (dependency ratios).
+
+In this session, we will combine data from multiple sources for our analysis. For the first part, import the population counts data obtained from the WorldBank DataBank [website](http://databank.worldbank.org/data/home.aspx) and assign it to `WB_Popdata`. The spreadsheet contains the estimated population counts of Nigeria since 2006.
+
+
 ```{r}
-
 library (tidyverse)
-
 library (readxl)
 library (mosaic)
 
-WB_PopData <- read_xlsx("./2020/Workshops/DemogRaphic Research and Data Analysis/Data - Misc/NGA - Pop Distribution.xlsx")
+WB_PopData <- read_xlsx("./Data - Misc/NGA - Pop Distribution.xlsx")
 
 WB_data_edited <- WB_PopData %>% 
+                  ## Do not select Country name, Series Code, and country code.
                   select(-c("Country Name",
                             "Series Code",
                             "Country Code")) %>% 
+                  ## Seperate the Series Name column into Age and Sex
+                  ## The two new columns should be seperated based on the position of ","
                   separate(`Series Name`, 
                            c("Age", "Sex"),
                            fill = "right", sep = ",",) %>% 
+                  ## Filter for rows with counts of male or female population not percentages
                   filter (Sex != " female (% of female population)" &
                           Sex != " male (% of male population)" &
                           Sex != " total") %>% 
+                  ## Filter for rows with counts of male or female population for population for 5year age groups
+                  ## Note that you could also retain the age groups and drop others for the dependency ratio estimations.
                   filter (Age != "Population ages 65 and above" &
                           Age != "Population ages 0-14" &
                           Age != "Population ages 15-64") %>% 
+                  ## Extract age groups from the string of text in the Age column
                   mutate (Age = str_sub(Age, -5, -1)) %>% 
-                  mutate (Age = replace(Age, which(Age == "above"), "80+"))
+                  mutate (Age = replace(Age, which(Age == "above"), "80+")) %>% 
                   
-                  
-WB_data_edited <- WB_data_edited %>% 
+                  ## Reshape data from wide to long format using `gather` or `pivot_longer`
                   pivot_longer( cols = `2018 [YR2018]`:`2006 [YR2006]`,
                                 names_to = "year", 
                                 values_to = "population",
                                 values_drop_na = TRUE) %>% 
                   mutate (year = str_sub(year, 1, 4))
-                  
 ```
 
 
 ### Age Dependency Ratios
+
+The age dependency ratio expresses the relationship between three age groups comprising of 0-15, 16-64 and 65-plus within a population. It is a measure of the number of dependents ages 0-14 and 65+ compared with the total population aged 15 to 64 for the given year. A high dependency ratio indicate a greater level of burden (in supporting the aging and youth population) on those of working age, and the overall economy, face a greater burden. There are three types of age dependency ratio. The *youth dependency ratio* measure the relationship between the population ages 0-15 and the population ages 16-64. The *old-age dependency ratio* is the population ages 65-plus divided by the population ages 16-64. The total age dependency ratio is the sum of the youth and old-age ratios.
+
+$`\sqrt{2}`$
 
 ```{r}
 
