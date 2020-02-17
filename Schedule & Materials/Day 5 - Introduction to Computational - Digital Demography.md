@@ -56,22 +56,16 @@ As with other data analysis, remeber to install the `rtweet` package and all the
 
 
 ```{r}
-
 #install.packages("rtweet")
-
 library (rtweet)
-
 library (tidyverse)
-
 library (mosaic)
-
 library (tidytext)
-
 ```
 
-In order to be able to stream tweets directly from Twitter, you need to have a Twitter account created. Please note `rtweet` should be used strictly in accordance with Twitter’s [developer terms](https://developer.twitter.com/en/developer-terms/more-on-restricted-use-cases.
+In order to be able to stream tweets directly from Twitter, you need to have created a Twitter account. If you don't have one, please click [here](https://twitter.com/). Please note `rtweet` should be used strictly in accordance with Twitter’s [developer terms](https://developer.twitter.com/en/developer-terms/more-on-restricted-use-cases).
 
-In the next few lines of code, we will create an object `keywords` with all possible keywords that could capture all possible tweets related to the immigration ban. The \" and \" have been used together with the keyword to ensure that tweets contain exact matches of the keywords.
+In the next few lines of code, we will create an object `keywords` with all possible keywords that could capture all tweets related to the immigration ban. The \" and \" have been used together with the keyword to ensure that tweets contain exact matches of the keywords.
 
 
 ```{r}
@@ -83,7 +77,9 @@ keywords <- c("\"visa ban\"", "ban",
               "\"visa restriction\"")
             
             ## The geocode argument is specified to retain only tweets from Nigeria
-            ## The retryonratelimit argument instructs R to retry the downloading of tweets once the rate limit has been reached
+            ## Note that the search_tweets function will only work if you are connected to the internet.
+            ## The retryonratelimit argument instructs R to retry the downloading of 
+            ## tweets once the rate limit has been reached
 visaBan_NG <- Map("search_tweets", n=10000, keywords,
               geocode = "9.06048,7.48324,400mi",
               include_rts = FALSE, retryonratelimit = TRUE)
@@ -104,7 +100,6 @@ In the following sections, we will import the dataset from the local computer an
 
 
 ```{r}
-
 DF_visaBan_NG <- read.csv("visaBan_NG.csv")
 
 ImmigrantBan_NG <- DF_visaBan_NG %>% 
@@ -152,7 +147,6 @@ ImmigrantBan_NG <- DF_visaBan_NG %>%
                    mutate(verified = derivedFactor("Verified" = verified ==(TRUE),
                                                    "Not Verified" = verified ==(FALSE),
                                                     .default = NA))
-
 ```
 
 #### Exercise 5A.1
@@ -171,7 +165,6 @@ Using the information available in the `ImmigrantBan_NG` dataset. Find the:
 In addition to the previous data wrangling processes, we could also remove some features from our tweets include mentions (@username). A careful review also shows that we streamed some tweets that are not related to the US immigration visa ban. As a result, we could also filter for observations that does not include the keywords - *okada* or *keke*. Note: that R is case sensitive, therefore, we need to take into considerations, that the keywords could include different combinations of cases.
 
 ```{r}
-
 tidy_ImmigrantBan_NG <- ImmigrantBan_NG %>%
                         select(created_at, text, 
                               favorite_count, 
@@ -215,7 +208,6 @@ word_ImmigrantBan_NG <- tidy_ImmigrantBan_NG %>%
                                
                        unite("bigram", c(word1, word2, word3), sep = " ") %>%
                        count(bigram, sort = TRUE)
-
 ```
 
 #### Exercise 5A.2
@@ -235,7 +227,6 @@ Sentiment analysis is the contextual mining of text in order to identify, interp
 
 
 ```{r}
-
 text_immigration <-  tidy_ImmigrantBan_NG %>%
                      select(created_at, text, 
                             favorite_count, 
@@ -254,13 +245,11 @@ text_immigration <-  tidy_ImmigrantBan_NG %>%
                      mutate (perc_nega = (n/sum(n))*100) %>% 
                      mutate (perc_nega = round (perc_nega, digits = 2),
                              sentiment = as.factor (sentiment))
-
 ```
 
 We could also visualize the sentiment of tweets on each day using the new dataframe created above `text_immigration`.
 
 ```{r}
-
 library(ggthemes)
 
     text_immigration %>% 
@@ -273,8 +262,6 @@ library(ggthemes)
     labs (title = "Sentiment of Tweets Related to US Immigration Ban") +
     guides(fill=guide_legend(title="Sentiment of Tweets")) +
     scale_fill_manual(values = c("#ffb612", "#000000"))
-
-
 ```
 
 ## What Next
