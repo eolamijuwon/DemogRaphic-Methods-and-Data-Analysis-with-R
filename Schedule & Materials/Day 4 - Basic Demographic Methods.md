@@ -1,8 +1,7 @@
 ---
-Title: "Basic Demographic Methods"
-
-Date: "13 February 2020"
-
+Date: 13 February 2020
+Title: Basic Demographic Methods
+output: pdf_document
 ---
 
 
