@@ -10,36 +10,41 @@ Date: "14 February 2020"
 ## Introduction to Computational and Digital Demography
 
 
-**Computational:** methods or approaches
-**Digital:** alternative sources of data ranging from social media data to web search logs
-**Demography:** the scientific study of human populations and, at its most basic, focuses on the processes of (i) fertility, (ii) mortality and (iii) mobility
+- **Computational:** methods or approaches
+
+- **Digital:** alternative sources of data ranging from social media data to web search logs
+
+- **Demography:** the scientific study of human populations and, at its most basic, focuses on the processes of (i) fertility, (ii) mortality and (iii) mobility
 
 We could define computational and digital demography as the application of mathematical/statistical methods or approaches to alternative sources of data (such as social media and others) in the study of human populations.
 
 Below are some impressive examples of studies in the field of computational and digital demography.
 
-### Fertility
+#### Fertility
 
-- Francesco Billari, Osea Giuntella, and Luca Stella. (2019) Does broadband Internet affect fertility?, Population Studies, 73:3, 297-316, DOI: 10.1080/00324728.2019.1584327
+- Francesco Billari, Osea Giuntella, and Luca Stella. (2019). "Does broadband Internet affect fertility?" Population Studies, 73:(3) 297-316 https://doi.org/10.1080/00324728.2019.1584327
 
-- Rampazzo Francesco, Emilio Zagheni, Ingmar Weber, Maria Rita Testa, and Francesco Billari. (2018). "Mater certa est, pater numquam: What can Facebook Advertising Data Tell Us about Male Fertility Rates?." arXiv preprint arXiv:1804.04632
-
-
-### Migration
-
-- Zagheni, E., Weber, I. and Gummadi, K. (2017), Leveraging Facebook's Advertising Platform to Monitor Stocks of Migrants. Population and Development Review, 43: 721-734. doi:10.1111/padr.12102
-
-- Quantifying international human mobility patterns using Facebook Network data Spyratos S, Vespe M, Natale F, Weber I, Zagheni E, et al. (2019) Quantifying international human mobility patterns using Facebook Network data. PLOS ONE 14(10): e0224134. https://doi.org/10.1371/journal.pone.0224134
-
-- Alexander, M., Polimis, K. and Zagheni, E. (2019), The Impact of Hurricane Maria on Out‐migration from Puerto Rico: Evidence from Facebook Data. Population and Development Review, 45:617-630. doi:10.1111/padr.12289
+- Rampazzo Francesco, Emilio Zagheni, Ingmar Weber, Maria Rita Testa, and Francesco Billari. (2018). "Mater certa est, pater numquam: What can Facebook Advertising Data Tell Us about Male Fertility Rates?." arXiv preprint arXiv:[1804.04632](http://arxiv.org/abs/1804.04632)
 
 
+#### Mortality
 
-### Other Population Processes
+- Fikrewold Bitew, Samuel H. Nyarko, Lloyd Potter, Corey S. Sparks (2020). "Predictive models and under-five mortality determinants in Ethiopia: evidence from the 2016 Ethiopian Demographic and Health Survey." *Under-review* [https://www.researchsquare.com/article/c2828244-2128-48c3-b753-079688e3b365/v2](ResearchSquare)
 
-- Fatehkia, Masoomali, Ridhi Kashyap, and Ingmar Weber. (2018), "Using Facebook ad data to track the global digital gender gap." World Development 107: 189-209. doi: https://doi.org/10.1016/j.worlddev.2018.03.007
+#### Migration
 
-- Khare Sangita, S. Kavyashree, Deepa Gupta, and Amalendu Jyotishi. (2017) "Investigation of nutritional status of children based on machine learning techniques using Indian demographic and health survey data." Procedia computer science 115: 338-349.
+- Zagheni, E., Weber, I. and Gummadi, K. (2017). "Leveraging Facebook's Advertising Platform to Monitor Stocks of Migrants." Population and Development Review, 43: 721-734. https://doi.org/10.1111/padr.12102
+
+- Quantifying international human mobility patterns using Facebook Network data Spyratos S, Vespe M, Natale F, Weber I, Zagheni E, et al. (2019). "Quantifying international human mobility patterns using Facebook Network data." PLOS ONE 14(10): e0224134. https://doi.org/10.1371/journal.pone.0224134
+
+- Alexander, M., Polimis, K. and Zagheni, E. (2019). "The Impact of Hurricane Maria on Out‐migration from Puerto Rico: Evidence from Facebook Data." Population and Development Review, 45:617-630. https://doi.org/10.1111/padr.12289
+
+
+#### Other Population Processes
+
+- Fatehkia, Masoomali, Ridhi Kashyap, and Ingmar Weber. (2018). "Using Facebook ad data to track the global digital gender gap." World Development 107: 189-209. doi: https://doi.org/10.1016/j.worlddev.2018.03.007
+
+- Khare Sangita, S. Kavyashree, Deepa Gupta, and Amalendu Jyotishi. (2017). "Investigation of nutritional status of children based on machine learning techniques using Indian demographic and health survey data." Procedia computer science 115: 338-349. https://doi.org/10.1016/j.procs.2017.09.087
 
 
 From the above examples, you can observe that there has been a wide range of opportunities to answer new and exciting demographic research questions using data from digital platforms. In todays session, we use the `rtweet` package to stream online conversations about the *US immigration visa ban*. We will explore the sentiments of the tweets as well as the top 10 trigrams. If you are more keen about using quantitative data from the Facebook advertising platform, Sofia Gill has an impressive and easy to follow tutorial that can be accessed [here](https://github.com/SofiaG1l/Using_Facebook_API)
@@ -163,6 +168,7 @@ Using the information available in the `ImmigrantBan_NG` dataset. Find the:
 *Hint:*  Can the exercise be addressed using any existing package? `stargazer`, `kableExtra`, `compareGroups`
 
 
+In addition to the previous data wrangling processes, we could also remove some features from our tweets include mentions (@username). A careful review also shows that we streamed some tweets that are not related to the US immigration visa ban. As a result, we could also filter for observations that does not include the keywords - *okada* or *keke*. Note: that R is case sensitive, therefore, we need to take into considerations, that the keywords could include different combinations of cases.
 
 ```{r}
 
@@ -181,13 +187,14 @@ tidy_ImmigrantBan_NG <- ImmigrantBan_NG %>%
                                 !str_detect(text, pattern = "Keke"),
                                 !str_detect(text, pattern = "KEKE"))
                                 
-                                
+                        ## Create a trigram of words used in the Tweet.              
 word_ImmigrantBan_NG <- tidy_ImmigrantBan_NG %>% 
                         unnest_tokens(bigram, text, token = "ngrams", n = 3) %>% 
                         separate(bigram, c("word1", "word2", "word3"), sep = " ") %>%  
                         
-                        filter(!word1 %in% stop_words$word,       # remove stopwords from both words in bi-gram
-                               !word2 %in% stop_words$word,       # remove stopwords from both words in bi-gram
+                        ## Remove common words (stopwords).
+                        filter(!word1 %in% stop_words$word,       # remove stopwords 
+                               !word2 %in% stop_words$word,       # remove stopwords
                                !word3 %in% stop_words$word) %>% 
                                
                         filter(!str_detect(word1, pattern = "[[:digit:]]"), # removes any words with numeric digits
@@ -211,8 +218,20 @@ word_ImmigrantBan_NG <- tidy_ImmigrantBan_NG %>%
 
 ```
 
+#### Exercise 5A.2
+
+Using the `word_ImmigrantBan_NG` data created above:
+
+- Create a dataframe with the top 10 bigrams.
+
+- Visualize the distribution using `ggplot2`
+
+    - What `geom_` is most applicable for your exercise?
 
 
+## Sentiment Analysis
+
+Sentiment analysis is the contextual mining of text in order to identify, interprete, and classify emotions with voice or text data using text analysis techniques. This opportunity allows us as researchers, and students to identify sentiments (positive, negative or neutral) towards a prevalent social problem or online conversation. For example we could be interested in the sentiments of tweets on the US immigration ban. Are they more positive, negative or neutral? In the following sections, we’ll attempt to examine the sentiments of tweets on each day.
 
 
 ```{r}
@@ -222,8 +241,14 @@ text_immigration <-  tidy_ImmigrantBan_NG %>%
                             favorite_count, 
                             retweet_count) %>%
                      unnest_tokens("word", text) %>%
+                     
+                     ## Filter for words that are not in the stopwords dictionary
                      anti_join(stop_words, by = "word") %>%
+                     
+                     ## Filter for words that are in the sentiment dictionary and our dataframe
                      inner_join(y = sentiments, by = "word") %>% 
+                     
+                     ## Count the number sentiments used each day
                      count(created_at, sentiment) %>% 
                      group_by(created_at) %>% 
                      mutate (perc_nega = (n/sum(n))*100) %>% 
@@ -231,6 +256,8 @@ text_immigration <-  tidy_ImmigrantBan_NG %>%
                              sentiment = as.factor (sentiment))
 
 ```
+
+We could also visualize the sentiment of tweets on each day using the new dataframe created above `text_immigration`.
 
 ```{r}
 
@@ -266,9 +293,9 @@ The Barcelona Summer School of Demography [BSSD] is also accepting applications 
 
 - Alburez-Gutierrez, D., Aref, S., Gil-Clavel, B. S., Grow, A., Negraia, D. V., Zagheni, E. In: Arbia, G., Peluso, S., Pini, A., Rivellini, G. (Eds.): Smart statistics for smart applications : book of short papers SIS2019, 23–30 Pearson (2019) https://osf.io/preprints/socarxiv/24jp7/
 
-- Cesare, N., Lee, H., McCormick, T., Spiro, E., & Zagheni, E. (2018). Promises and pitfalls of using digital traces for demographic research.Demography,55(5), 1979-1999.
+- Cesare, N., Lee, H., McCormick, T., Spiro, E., & Zagheni, E. (2018). "Promises and pitfalls of using digital traces for demographic research." Demography. 55(5), 1979-1999. https://doi.org/10.1007/s13524-018-0715-2
 
-- Pham, Katherine Hoffmann, Francesco Rampazzo, and Leah R. Rosenzweig. "Online Surveys and Digital Demography in the Developing World: Facebook Users in Kenya." arXiv preprint arXiv:1910.03448 (2019).
+- Pham, Katherine Hoffmann, Francesco Rampazzo, and Leah R. Rosenzweig. (2019). "Online Surveys and Digital Demography in the Developing World: Facebook Users in Kenya." arXiv preprint arXiv:[1910.03448](https://arxiv.org/abs/1910.03448).
 
 - Salganik, Matthew J. (2017). Bit by Bit: Social Research in the Digital Age. Princeton, NJ: Princeton University Press. Open review edition. https://www.bitbybitbook.com/en/1st-ed/preface/
 
