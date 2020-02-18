@@ -58,16 +58,18 @@ WB_data_edited <- WB_PopData %>%
 
 ### Age Dependency Ratios
 
-The age dependency ratio expresses the relationship between three age groups comprising of 0-15, 16-64 and 65-plus within a population. It is a measure of the number of dependents ages 0-14 and 65+ compared with the total population aged 15 to 64 for the given year. A high dependency ratio indicate a greater level of burden (in supporting the aging and youth population) on those of working age, and the overall economy, face a greater burden. There are three types of age dependency ratio. The *youth dependency ratio* measure the relationship between the population ages 0-15 and the population ages 16-64. The *old-age dependency ratio* is the population ages 65-plus divided by the population ages 16-64. The total age dependency ratio is the sum of the youth and old-age ratios.
+The age dependency ratio expresses the relationship between three age groups comprising of 0-15, 16-64 and 65-plus within a population. It is a measure of the number of dependents ages 0-14 and 65+ compared with the total population aged 15 to 64 for the given year. A high dependency ratio indicate a greater level of burden (in supporting the aging and youth population) on those of working age, and the overall economy, face a greater burden. There are three types of age dependency ratio. The *youth dependency ratio* measure the relationship between the population ages 0-15 and the population ages 16-64. The *old-age dependency ratio* is the population ages 65-plus divided by the population ages 16-64. The *total age dependency ratio* is the sum of the youth and old-age ratios.
 
-$`\sqrt{2}`$
+
 
 ```{r}
 
 WB_dependencyRatio <- WB_data_edited %>% 
+                      ## Extract the older age in all interval
                       mutate (age_single = str_sub(Age, -2, -1)) %>% 
                       mutate (age_single = replace(age_single, which(age_single == "0+"), 80)) %>% 
                       mutate (age_single = as.numeric(age_single)) %>% 
+                      ## Reclassify ages into Young, working age or old
                       mutate (age_classification = derivedFactor("Young" = age_single < 15,
                                                                  "Working" = (age_single >= 15 & age_single <= 64),
                                                                  "Old" = (age_single > 64))) %>% 
@@ -86,11 +88,28 @@ WB_dependencyRatio <- WB_data_edited %>%
 
 ```
 
-### Fertility Rates
+### Basic Measures of Fertility
+
+In the following sections, we will attempt to estimate the measures of fertility including the *Crude birth rate*, *Total fertility rate*, *General fertility rate*, and the *Gross reproduction rate*.
+
+- **The crude birth rate (CBR):** measures the number of live births occurring among the population of a given geographical area during a given year, per 1,000 mid-year total population of the given geographical area during the same year. It could be summarised mathematically as the sum of all live births (in a year) divided by the total population (in the same year). Unlike other measures of fertility, the rate is crude because the total population is represented in the denominator. This measure of fertility ignores all differences in composition of the population such as age and sex.
+
+- **The total fertility rate (TFR):** measures the number of children a woman or (group of women) would have if the population’s age-specific fertility rates remained constant.
+
+occurring among the population of a given geographical area during a given year, per 1,000 mid-year total population of the given geographical area during the same year. It could be summarised mathematically as the sum of all live births (in a year) divided by the total population (in the same year).
+
+- **The general fertility rate (GFR):** measures the total number of live births in a given geographical area during a given year/period per 1000 mid year population of women in child bearing ages 15-49 in the same year.
+
+- **The age specific fertility rate (ASFR):** measures the number of live births occurring to women in each age group in a given geographical area during a given year per 1000 women in the each of the age groups. It could be summarised mathematically as the number of all live births to all women in a specific age group divided by the total number of women in that age group.
 
 
+- **The gross reproduction rate (GRR):** measures the average number of daughters that would replace their mothers, assuming that the age and sex specific fertility rate for the current period remained constant. It is described as the number of baby girls that would be born to 1000 women passing through their child bearing years, if the age specific birth rates of a given year remained constant and if no women entering the child bearing period died before reaching menopause.
+
+- **The net reproduction rate (NRR):** measures the average number of daughters that would be born to a female (or a group of females) if
+she passed through her lifetime conforming to the age-specific fertility and mortality rates of a given year.
 
 
+In the following session, we will combine the births data from the demographic and health survey with the population estimates obtained from the World Bank. Since the demographic and health survey is a national survey that monitors the demographic and health changes in a population, we will obtain the counts of total births in the popuilation for the year 2018. We apply the DHS sampling weights while obtaining the counts of number of births for women in each age group. We will also assume that the DHS children sample is 1/1000th of the total number of children in the country.
 
 ```{r}
 
@@ -99,7 +118,7 @@ library (survey)
 library(tibble)
 
 
-DHS_children <- read.dta13("./2020/Workshops/DemogRaphic Research and Data Analysis/Data - Misc/[Sample] Nigeria  - children.dta")
+DHS_children <- read.dta13("./Data - Misc/[Sample] Nigeria  - children.dta")
 
 DHS_children <- DHS_children %>% 
                 filter (b2 == 2018) %>% 
@@ -137,10 +156,7 @@ WB_PoPdata     <- WB_PopData %>%
                           Age != "Population ages 0-14" &
                           Age != "Population ages 15-64") %>% 
                   mutate (Age = str_sub(Age, -5, -1)) %>% 
-                  mutate (Age = replace(Age, which(Age == "above"), "80+"))
-                  
-                  
-WB_PoPdata    <-  WB_PoPdata %>% 
+                  mutate (Age = replace(Age, which(Age == "above"), "80+")) %>% 
                   select (c("Age", "Sex", "2018 [YR2018]")) %>% 
                   pivot_wider(names_from = Sex, 
                               values_from = `2018 [YR2018]`) %>% 
@@ -363,4 +379,3 @@ T.CDR.Istd <- sum(TA_ageD * Std.ageR)
 
 ```
 
-• The standardized crude rates are found by summing scrcA
